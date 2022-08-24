@@ -1,6 +1,8 @@
 import { user } from "../../../data/user";
 import * as requestFromServer from "./usersCrud";
 import { userSlice } from "./usersSlice";
+import {db} from '../../../firebaseconfig';
+import {collection, getDocs} from 'firebase/firestore';
 
 const { actions } = userSlice;
 
@@ -18,10 +20,10 @@ export const createUser = (user: any) => () => {
   );
 };
 
-export const getAllUsers = () => (dispatch: any) => {
-    const response = localStorage.getItem('userList');
-        if(response)
-        dispatch(actions.getUserList(JSON.parse(response)));
+export const getAllUsers =  () => async (dispatch: any) => {
+    const userCollectionRef = collection(db,'users');
+    const data = await getDocs(userCollectionRef)
+    dispatch(actions.getUserList(data.docs.map((doc)=>({...doc.data(), id:doc.id}))));
   };
   
   export const searchUser = (key:any) => (dispatch: any) => {
