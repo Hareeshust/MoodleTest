@@ -2,26 +2,41 @@ import { user } from "../../../data/user";
 import * as requestFromServer from "./usersCrud";
 import { userSlice } from "./usersSlice";
 import {db} from '../../../firebaseconfig';
-import {collection, getDocs} from 'firebase/firestore';
+import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore';
 
 const { actions } = userSlice;
+const userCollectionRef = collection(db,'users');
 
-export const createUser = (user: any) => () => {
-    user = getUserStructure(user);
-    let response =  localStorage.getItem('userList');
-    let users = [];
-  if(response){
-    users = JSON.parse(response);
-    users.push({user: user})
-  }
-  localStorage.setItem('userList', JSON.stringify(users));
-    return new Promise((resolve: any) =>
-    setTimeout(() => resolve({ data: "success" }), 500)
-  );
+export const updateUser = (id: any, age:any) => async () =>{
+  const userDoc = doc(db,"users", id)
+  const newFields = {age:age+1}
+  await updateDoc(userDoc, newFields);
+
+}
+
+export const deleteUser = (id: any) => async () =>{
+  const userDoc = doc(db,"users", id)
+  await deleteDoc(userDoc);
+
+}
+
+export const createUser = (user: any) => async () => {
+  await addDoc(userCollectionRef, {name: user.firstname, designation: user.designation})
+
+  //   user = getUserStructure(user);
+  //   let response =  localStorage.getItem('userList');
+  //   let users = [];
+  // if(response){
+  //   users = JSON.parse(response);
+  //   users.push({user: user})
+  // }
+  // localStorage.setItem('userList', JSON.stringify(users));
+  //   return new Promise((resolve: any) =>
+  //   setTimeout(() => resolve({ data: "success" }), 500)
+  // );
 };
 
 export const getAllUsers =  () => async (dispatch: any) => {
-    const userCollectionRef = collection(db,'users');
     const data = await getDocs(userCollectionRef)
     dispatch(actions.getUserList(data.docs.map((doc)=>({...doc.data(), id:doc.id}))));
   };

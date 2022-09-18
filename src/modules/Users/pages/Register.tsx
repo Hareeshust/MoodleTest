@@ -113,12 +113,12 @@ export const Register = (props: any) => {
                   </div>
                   <div className="col-5">
                     <div className="form-group">
-                      <label>Last Name</label>
+                      <label>Designation</label>
                       <Field
                         type="text"
                         className="form-control input--style-4"
-                        placeholder="Enter Last Name"
-                        name="lastname"
+                        placeholder="Enter Designation"
+                        name="designation"
                       />
                     </div>
                   </div>

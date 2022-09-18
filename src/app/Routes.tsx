@@ -15,8 +15,21 @@ import {
 import { Login } from "../modules/Auth";
 import { Users } from "../modules/Users";
 import { Register } from "../modules/Users";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { RootState } from "../app/store";
+import * as actions from "../modules/Auth/_redux/authActions";
 
 export function Routes() {
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector(
+    (state: RootState) => ({
+      isLoggedIn: state.auth.isLoggedIn
+    }),
+    shallowEqual
+  );
+  const logout =()=> {
+    dispatch(actions.logout());
+  }
   return (
     <Router>
         {/* <Switch>
@@ -30,7 +43,11 @@ export function Routes() {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to={"/login"}>Login</Link>
+          {isLoggedIn ? (
+           <Link className="nav-link" to="" onClick={logout}>Logout</Link>
+           ) :  <Link className="nav-link" to={"/login"}>Login</Link>
+          }
+         
         </li>
         <li className="nav-item">
           {/* <Link className="nav-link" to={"/register"}>Register</Link> */}

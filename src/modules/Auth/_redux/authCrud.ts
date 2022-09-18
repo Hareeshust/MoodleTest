@@ -9,7 +9,7 @@ export function fetchCount(amount = 1) {
 }
 
 export function fetchAllUsers() {
-  return axios.get(`${endpoint}`);
+  //return axios.get(`${endpoint}`);
 }
 
 export function loginUser() {

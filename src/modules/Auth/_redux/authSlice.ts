@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   value: 0,
   status: 'idle',
-  users: null
+  users: null,
+  user:null,
+  isLoggedIn: false
 };
 
 
@@ -31,6 +33,13 @@ export const authSlice = createSlice({
       state.users = action.payload?.results;
       localStorage.setItem('userList', JSON.stringify(action.payload?.results));
     },
+    updateUser: (state, action)=>{
+      state.user=action.payload.email;
+      state.isLoggedIn = true;
+    },
+    updateLogout: (state, action) =>{
+      state.isLoggedIn = action.payload;
+    }
   }
 });
 

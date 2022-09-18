@@ -3,7 +3,10 @@ import * as actions from "../_redux/authActions";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import {signInWithGoogle} from '../../../firebaseconfig'
 import { useHistory } from "react-router-dom";
+import { RootState } from "../../../app/store";
+
 import {
   Alert
 } from "react-bootstrap";
@@ -28,16 +31,29 @@ function Login(props: any) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [loginFailure, setLoginFailure] = useState(false)
+  const { user, isLoggedIn } = useSelector(
+    (state: RootState) => ({
+      user: state.auth.user,
+      isLoggedIn: state.auth.isLoggedIn
+    }),
+    shallowEqual
+  );
+
   useEffect(() => {
-    dispatch(actions.getAllUsers());
+   // dispatch(actions.getAllUsers());
   }, []);
+  useEffect(() => {
+    if(isLoggedIn){
+      history.push("/home");
+    }
+  }, [isLoggedIn])
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,
     validationSchema: LoginSchema,
     onSubmit: (values, { setStatus, setSubmitting }) => {
       setTimeout(() => {
-        actions.login(values.username, values.password)()
+        actions.login(values.username, values.password,dispatch)()
           .then((resp:any) => {
             if(resp.data === "success"){
               history.push("/home");
@@ -52,10 +68,18 @@ function Login(props: any) {
           });
       }, 500);
     },
-  });
-
+  }); 
+  console.log('isLoggedIn', isLoggedIn);
+  
   return (
     <div className="auth-inner">
+        <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" >
+          Sign in with Google
+        </button>
+
+        {/* <button type="button" className="login-with-google-btn" disabled>
+          Sign in with Google
+        </button> */}
         <form
         onSubmit={formik.handleSubmit}
         >
