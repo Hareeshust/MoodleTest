@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import { Login } from "../modules/Auth";
 import { Users } from "../modules/Users";
-import { Register } from "../modules/Users";
+import { Register, Dashboard } from "../modules/Users";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { RootState } from "../app/store";
 import * as actions from "../modules/Auth/_redux/authActions";
@@ -37,16 +37,16 @@ export function Routes() {
           <Route path="/user" component={Users} />
         </Switch> */}
 
-<nav className="navbar navbar-expand-lg navbar-light fixed-top">
-  <div className="container">
-    <Link className="navbar-brand" to={"/"}>Moodle Quiz</Link>
-    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+<nav className="">
+  <div className="">
+    {/* <Link className="navbar-brand" to={"/"}>Moodle Quiz</Link> */}
+    <div className="collapse navbar-collapse" id="">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
            <Link className="nav-link" to="" onClick={logout}>Logout</Link>
            ) :  <Link className="nav-link" to={"/login"}>Login</Link>
-          }
+          } */}
          
         </li>
         <li className="nav-item">
@@ -57,12 +57,13 @@ export function Routes() {
   </div>
 </nav>
 
-<div className="auth-wrapper">
+<div className="">
     <Switch>
       <Route exact path='/' component={Login} />
       <Route exact path='/login' component={Login} />
       <Route path="/home" component={Users} />
       <Route path="/register" component={Register} />
+      <Route path="/dashboard" component ={Dashboard}/>
     </Switch>
 </div>
     </Router>

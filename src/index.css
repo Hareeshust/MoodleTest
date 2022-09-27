@@ -382,3 +382,147 @@ body, html, .App, #root {
     cursor: not-allowed;
   }
 }
+
+
+.wrapper-login{
+  background-image: url('assets/Bg.png');
+  height: 100vh;
+}
+.wrapper-login .form-outline{
+  padding: 20px 0;
+}
+.wrapper-login .form-outline label{
+  font-family: cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+.wrapper-login .volume{
+  padding: 20px 0 0;
+}
+.wrapper-login .volume input ~label{
+  background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper-login .volume input:checked ~label{
+  background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper-login .form-outline input{
+  background: url("assets/Inputbox.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 65px;
+  height: 65px;
+  width: 100%;
+  border: none;
+  color: white;
+  font-size: 20px;
+  box-shadow: none;
+  padding: 0 25px;
+}
+.wrapper-login .row .passreset{
+  text-align: right;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+.wrapper-login .row .passreset a{
+  color: white!important;
+  text-decoration: none;
+}
+.wrapper-login .signin{
+  background: url("assets/Sign-in-Button.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  border: none;
+  height: 90px;
+  width: 100%;
+  background-size: 100% 100%;
+  box-shadow: none;
+}
+.wrapper-login .signin:focus{
+  border: none;
+}
+.wrapper-login .form-check .radio-inline{
+  background: url("assets/Selector-Default.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  height: 62px;
+  width: 100%;
+  padding: 18px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-size: 100% 100%;
+  font-size: 20px;
+}
+.wrapper-login .form-check input[type=radio],.wrapper-login .form-check input[type=checkbox]{
+  visibility: hidden;
+}
+.wrapper-login .form-check .input#radio1 + label{
+  background: url("assets/Selector-Active.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+}
+
+.wrapper .profile {
+  padding: 20px 0 0;
+}
+.wrapper .profile button{
+  background: url("assets/Profile.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 55px;
+  width: 55px;
+  border: none;
+}
+.wrapper .form-check.dash-items .form-check-input~label{
+  cursor: pointer;
+  height: 200px;
+  width: 100%;
+  padding: 80px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-size: 100% 100%!important;
+  font-size: 27px;
+} 
+.wrapper .form-check input[type=radio],.wrapper .form-check input[type=checkbox]{
+  visibility: hidden;
+}
+.wrapper .form-check #radio1~label{
+  background: url("assets/1st-Tile.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio1:checked + label{
+  background: url("assets/1st-Tile-Active.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio2~label{
+  background: url("assets/2-Tile-Default.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio2:checked + label{
+  background: url("assets/2-Tile-Active.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio3~label{
+  background: url("assets/3-Tile-Default.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio3:checked + label{
+  background: url("assets/3-Tile-Active.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio4~label{
+  background: url("assets/4-Tile-Default.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio4:checked + label{
+  background: url("assets/4-Tile-Active.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio5~label{
+  background: url("assets/5-Tile-Default.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio5:checked + label{
+  background: url("assets/5-Tile-Active.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio6~label{
+  background: url("assets/6-Tile-Default.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio6:checked + label{
+  background: url("assets/6-Tile-Active.png") no-repeat scroll 0 0 transparent;
+} 

@@ -25,6 +25,11 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
         username,
         password
       );
+      // const user = await createUserWithEmailAndPassword(
+      //   auth,
+      //   username,
+      //   password
+      // );
       console.log(user);
       if(user){
         dispatch(actions.updateUser(user?.user));
