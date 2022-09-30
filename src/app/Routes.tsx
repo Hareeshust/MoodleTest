@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import { Login } from "../modules/Auth";
 import { Users } from "../modules/Users";
-import { Register, Dashboard } from "../modules/Users";
+import { Register, Dashboard, Questions } from "../modules/Users";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { RootState } from "../app/store";
 import * as actions from "../modules/Auth/_redux/authActions";
@@ -64,6 +64,7 @@ export function Routes() {
       <Route path="/home" component={Users} />
       <Route path="/register" component={Register} />
       <Route path="/dashboard" component ={Dashboard}/>
+      <Route path="/questions" component ={Questions}/>
     </Switch>
 </div>
     </Router>

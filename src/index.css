@@ -526,3 +526,130 @@ body, html, .App, #root {
 .wrapper .form-check input#radio6:checked + label{
   background: url("assets/6-Tile-Active.png") no-repeat scroll 0 0 transparent;
 } 
+
+.wrapper{
+  background-image: url('assets/Bg.png');
+  height: 100vh;
+}
+
+.wrapper .nav-bar{
+  margin: 0!important;
+  background: url("assets/Top-Banner.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 115px;
+}
+.wrapper .volume{
+  padding: 20px 0 0;
+}
+.wrapper .volume input ~label{
+  background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper .volume input:checked ~label{
+  background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper .exit {
+  padding: 20px 15px 0 0;
+}
+.wrapper .totalq{
+  background: url("assets/Total-question.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 60px;
+  width: 85px;
+  margin: 20px 15px 0 35px;
+  padding: 14px 20px 20px 47px;
+  color: rgb(225, 225, 31);
+  font-weight: bold;
+  font-size: 20px;
+}
+.wrapper .totalt{
+  background: url("assets/Total-time.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 60px;
+  width: 133px;
+  margin: 20px 15px 0 0;
+  padding: 14px 20px 20px 45px;
+  color: rgb(225, 225, 31);
+  font-weight: bold;
+  font-size: 20px;
+}
+.wrapper .exit button{
+  background: url("assets/Exit-button.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 55px;
+  width: 100%;
+  border: none;
+}
+.wrapper .question{
+  background: url("assets/Question-bg.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 300px;
+  width: 100%;
+  COLOR: white;
+  padding: 50px 150px;
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+}
+.wrapper .question .title{
+  font-size: 20px;
+}
+.wrapper .timer{
+  background: url("assets/Timer.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  color: white;
+  padding: 40px 35px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.wrapper .form-check.dash-items .form-check-input~label{
+  cursor: pointer;
+  height: 200px;
+  width: 100%;
+  padding: 60px 0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-size: 100% 100%!important;
+  font-size: 27px;
+  position: absolute;
+  top: -47px;
+  left: 0;
+}
+.wrapper .form-check input[type=radio],.wrapper .form-check input[type=checkbox]{
+  visibility: hidden;
+}
+.wrapper .form-check #radio1~label{
+  background: url("assets/Left-option-default-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio1:checked + label{
+  background: url("assets/Left-option-selected-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio2~label{
+  background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio2:checked + label{
+  background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio3~label{
+  background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio3:checked + label{
+  background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check #radio4~label{
+  background: url("assets/Right-option-default-1.png") no-repeat scroll 0 0 transparent;
+}
+.wrapper .form-check input#radio4:checked + label{
+  background: url("assets/Right-option-selected-1.png") no-repeat scroll 0 0 transparent;
+}
