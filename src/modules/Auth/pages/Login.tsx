@@ -160,7 +160,8 @@ function Login(props: any) {
                   
                     <div className="row mb-4">
                       <div className="col passreset">
-                        <a href="#">FORGOT PASSWORD</a>
+                        {/* <a href="#">FORGOT PASSWORD</a> */}
+                        <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" ></button>
                       </div>
                     </div>
                   
