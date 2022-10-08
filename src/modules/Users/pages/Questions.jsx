@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-
+import { useLocation } from "react-router-dom";
 
 const Questions = ()=> {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+    console.log(location.search); 
+    console.log(location.state.workstream); 
+ }, [location]);
+
   return (
     <div class="wrapper-question bg-image">
   <div class="row nav-bar">

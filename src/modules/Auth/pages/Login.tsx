@@ -75,7 +75,7 @@ function Login(props: any) {
       actions.googleSignIn(dispatch)()
         .then((resp:any) => {
           if(resp.data === "success"){
-            history.push("/Dashboard");
+            history.push("/dashboard");
           }
           else{
             setLoginFailure(true);

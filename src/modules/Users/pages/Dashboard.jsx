@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-const json = {
-  question: 'Do you support cookies in cakes?',
+import { useHistory } from "react-router-dom";
+
+const workstream = {
+  title: 'TSYS Workstream',
   choices:
   [
     { text: 'NOTIFICATION', value: 'notification' },
@@ -33,14 +35,17 @@ const WorkStreamOption = ({ options, selected, onChange }) => {
   );
 };
 const Dashboard = ()=> {
-  const [selectedOption, setSelectedOption] = useState();
+  const history = useHistory();
+  const [selectedStream, setSelectedStream] = useState();
   const handleClick = ()=> {
-    console.log('submitted option', selectedOption);
+    history.push({
+      pathname: '/questions',
+      state: { workstream: selectedStream }
+  });
   }
 
   const handleOnChange= (e) => {
-    console.log('selected option', e.target.value);
-    setSelectedOption(e.target.value);
+    setSelectedStream(e.target.value);
   }
 
   return (
@@ -62,11 +67,13 @@ const Dashboard = ()=> {
                   <form>
               <div className="form-check row dash-items">
                 <WorkStreamOption
-                  options={json.choices}
+                  options={workstream.choices}
                   onChange={(e) => handleOnChange(e)}
-                  selected={selectedOption} />
+                  selected={selectedStream} />
               </div>
-                    </form>
+              <button onClick={() =>handleClick()}>Next</button>
+
+              </form>
               </div>
           </div>
   
