@@ -1,10 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-
-
-const Dashboard = ()=> {
+const json = {
+  question: 'Do you support cookies in cakes?',
+  choices:
+  [
+    { text: 'NOTIFICATION', value: 'notification' },
+    { text: 'CARD', value: 'card' },
+    { text: 'SERVICING', value: 'servicing' },
+    { text: 'AUTHORIZATION', value: 'authorization' },
+    { text: 'RISK', value: 'risk' },
+    { text: 'FRAUD', value: 'fraud' }
+  ]
+}
+const WorkStreamOption = ({ options, selected, onChange }) => {
   return (
-    <div className="wrapper bg-image">
+    <div className="">
+      {options.map((choice, index) => (
+
+         <div className="col-xs-12 col-md-4">
+           <input type="radio"
+            name="optradio"
+            className="form-check-input"
+            value={choice.value}
+            key={index}
+            checked={selected === choice.value}
+            id={`radio${index+1}`}
+            onChange={onChange} />
+         <label className="radio-inline" for={`radio${index+1}`}>{choice.text}</label>
+     </div>
+      ))}
+    </div>
+  );
+};
+const Dashboard = ()=> {
+  const [selectedOption, setSelectedOption] = useState();
+  const handleClick = ()=> {
+    console.log('submitted option', selectedOption);
+  }
+
+  const handleOnChange= (e) => {
+    console.log('selected option', e.target.value);
+    setSelectedOption(e.target.value);
+  }
+
+  return (
+    <div className="wrapper-dashboard bg-image">
     <div className="row nav-bar">
       <div className="col-xs-1 col-xs-offset-10 volume">
           <div className="form-check">
@@ -20,32 +60,12 @@ const Dashboard = ()=> {
           <div className="row">
               <div className="col-xs-12 mt">
                   <form>
-                      <div className="form-check row dash-items">
-                          <div className="col-xs-12 col-md-4">
-                              <input type="radio" className="form-check-input" id="radio1" name="optradio" value="option1" checked/>
-                              <label className="radio-inline" for="radio1">NOTIFICATION</label>
-                          </div>
-                          <div className="col-xs-12 col-md-4">
-                              <input type="radio" className="form-check-input" id="radio2" name="optradio" value="option2"/>
-                              <label className="radio-inline" for="radio2">CARD</label>
-                          </div>
-                          <div className="col-xs-12 col-md-4">
-                            <input type="radio" className="form-check-input" id="radio3" name="optradio" value="option3"/>
-                            <label className="radio-inline" for="radio3">SERVICING</label>
-                        </div>
-                        <div className="col-xs-12 col-md-4">
-                          <input type="radio" className="form-check-input" id="radio4" name="optradio" value="option3"/>
-                          <label className="radio-inline" for="radio4">AUTHORIZATION</label>
-                      </div>
-                      <div className="col-xs-12 col-md-4">
-                        <input type="radio" className="form-check-input" id="radio5" name="optradio" value="option3"/>
-                        <label className="radio-inline" for="radio5">RISK</label>
-                    </div>
-                    <div className="col-xs-12 col-md-4">
-                      <input type="radio" className="form-check-input" id="radio6" name="optradio" value="option3"/>
-                      <label className="radio-inline" for="radio6">FRAUD</label>
-                  </div>
-                        </div>
+              <div className="form-check row dash-items">
+                <WorkStreamOption
+                  options={json.choices}
+                  onChange={(e) => handleOnChange(e)}
+                  selected={selectedOption} />
+              </div>
                     </form>
               </div>
           </div>

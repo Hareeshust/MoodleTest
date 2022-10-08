@@ -71,6 +71,21 @@ function Login(props: any) {
   }); 
   console.log('isLoggedIn', isLoggedIn);
   
+  const googleSignin = ()=> {
+      actions.googleSignIn(dispatch)()
+        .then((resp:any) => {
+          if(resp.data === "success"){
+            history.push("/Dashboard");
+          }
+          else{
+            setLoginFailure(true);
+          }
+         
+        })
+        .catch(() => {
+          
+        });
+  }
   return (
     // <div className="auth-inner">
     //     <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" >
@@ -149,7 +164,7 @@ function Login(props: any) {
                       </div>
               <div className="form-outline">
                 <div>
-                  <button onClick={signInWithGoogle} className="google-sigin">
+                  <button type="button" onClick={googleSignin} className="google-sigin">
                     <div className="signin-sub">
                       <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fill-rule="evenodd">
                         <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path>
@@ -161,7 +176,10 @@ function Login(props: any) {
                   </button>
                 </div>
               </div>
-               
+               {/* <div className="form-outline">
+               <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" ></button>
+
+               </div> */}
                     <div className="form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example1">EMAIL</label>
                         <input type="email" id="form2Example1" className="form-control" />
@@ -172,7 +190,6 @@ function Login(props: any) {
                         <label className="form-label" htmlFor="form2Example2">PASSWORD</label>
                         <input type="password" id="form2Example2" className="form-control" />
                     </div>
-                    {/* <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" ></button> */}
              
                     <div className="row mb-4">
                       <div className="col passreset">

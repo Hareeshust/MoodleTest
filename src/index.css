@@ -388,13 +388,14 @@ body, html, .App, #root {
   display: inline-flex; 
   align-items: center; 
   color: rgba(0, 0, 0, 0.54);
-   box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
-   padding: 0px; 
-   border-radius: 2px; 
-   border: 1px solid transparent; 
-   font-size: 14px; 
-   font-weight: 500;
-    font-family: Roboto, sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; 
+  padding: 0px; 
+  border-radius: 2px; 
+  border: 1px solid transparent; 
+  font-size: 14px; 
+  font-weight: 500;
+  font-family: Roboto, sans-serif;
+  float: right;
 }
 .signin-sub{
   margin-right: 10px; 
@@ -489,17 +490,45 @@ body, html, .App, #root {
   background-size: 100% 100%;
 }
 
-.wrapper .profile {
+.wrapper-dashboard{
+  background-image: url('assets/Bg.png');
+  height: 100vh;
+}
+
+.wrapper-dashboard .nav-bar{
+  margin: 0!important;
+  background: url("assets/Top-Banner.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 115px;
+}
+.wrapper-dashboard .volume{
   padding: 20px 0 0;
 }
-.wrapper .profile button{
+.wrapper-dashboard .volume input ~label{
+  background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper-dashboard .volume input:checked ~label{
+  background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper-dashboard .profile {
+  padding: 20px 0 0;
+}
+.wrapper-dashboard .profile button{
   background: url("assets/Profile.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 55px;
   width: 55px;
   border: none;
 }
-.wrapper .form-check.dash-items .form-check-input~label{
+.wrapper-dashboard .form-check.dash-items .form-check-input~label{
   cursor: pointer;
   height: 200px;
   width: 100%;
@@ -509,79 +538,79 @@ body, html, .App, #root {
   text-align: center;
   background-size: 100% 100%!important;
   font-size: 27px;
-} 
-.wrapper .form-check input[type=radio],.wrapper .form-check input[type=checkbox]{
+}
+.wrapper-dashboard .form-check input[type=radio],.wrapper-dashboard .form-check input[type=checkbox]{
   visibility: hidden;
 }
-.wrapper .form-check #radio1~label{
+.wrapper-dashboard .form-check #radio1~label{
   background: url("assets/1st-Tile.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio1:checked + label{
+.wrapper-dashboard .form-check input#radio1:checked + label{
   background: url("assets/1st-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio2~label{
+.wrapper-dashboard .form-check #radio2~label{
   background: url("assets/2-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio2:checked + label{
+.wrapper-dashboard .form-check input#radio2:checked + label{
   background: url("assets/2-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio3~label{
+.wrapper-dashboard .form-check #radio3~label{
   background: url("assets/3-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio3:checked + label{
+.wrapper-dashboard .form-check input#radio3:checked + label{
   background: url("assets/3-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio4~label{
+.wrapper-dashboard .form-check #radio4~label{
   background: url("assets/4-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio4:checked + label{
+.wrapper-dashboard .form-check input#radio4:checked + label{
   background: url("assets/4-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio5~label{
+.wrapper-dashboard .form-check #radio5~label{
   background: url("assets/5-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio5:checked + label{
+.wrapper-dashboard .form-check input#radio5:checked + label{
   background: url("assets/5-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio6~label{
+.wrapper-dashboard .form-check #radio6~label{
   background: url("assets/6-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio6:checked + label{
+.wrapper-dashboard .form-check input#radio6:checked + label{
   background: url("assets/6-Tile-Active.png") no-repeat scroll 0 0 transparent;
-} 
-
-.wrapper{
+}
+ 
+.wrapper-question{
   background-image: url('assets/Bg.png');
   height: 100vh;
 }
 
-.wrapper .nav-bar{
+.wrapper-question .nav-bar{
   margin: 0!important;
   background: url("assets/Top-Banner.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 115px;
 }
-.wrapper .volume{
+.wrapper-question .volume{
   padding: 20px 0 0;
 }
-.wrapper .volume input ~label{
+.wrapper-question .volume input ~label{
   background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 50px;
   width: 50px;
   cursor: pointer;
 }
-.wrapper .volume input:checked ~label{
+.wrapper-question .volume input:checked ~label{
   background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 50px;
   width: 50px;
   cursor: pointer;
 }
-.wrapper .exit {
+.wrapper-question .exit {
   padding: 20px 15px 0 0;
 }
-.wrapper .totalq{
+.wrapper-question .totalq{
   background: url("assets/Total-question.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 60px;
@@ -592,7 +621,7 @@ body, html, .App, #root {
   font-weight: bold;
   font-size: 20px;
 }
-.wrapper .totalt{
+.wrapper-question .totalt{
   background: url("assets/Total-time.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 60px;
@@ -603,14 +632,14 @@ body, html, .App, #root {
   font-weight: bold;
   font-size: 20px;
 }
-.wrapper .exit button{
+.wrapper-question .exit button{
   background: url("assets/Exit-button.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 55px;
   width: 100%;
   border: none;
 }
-.wrapper .question{
+.wrapper-question .question{
   background: url("assets/Question-bg.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 300px;
@@ -621,10 +650,10 @@ body, html, .App, #root {
   font-weight: bold;
   text-align: center;
 }
-.wrapper .question .title{
+.wrapper-question .question .title{
   font-size: 20px;
 }
-.wrapper .timer{
+.wrapper-question .timer{
   background: url("assets/Timer.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 120px;
@@ -635,7 +664,7 @@ body, html, .App, #root {
   font-size: 22px;
   font-weight: bold;
 }
-.wrapper .form-check.dash-items .form-check-input~label{
+.wrapper-question .form-check.dash-items .form-check-input~label{
   cursor: pointer;
   height: 200px;
   width: 100%;
@@ -649,30 +678,30 @@ body, html, .App, #root {
   top: -47px;
   left: 0;
 }
-.wrapper .form-check input[type=radio],.wrapper .form-check input[type=checkbox]{
+.wrapper-question .form-check input[type=radio],.wrapper-question .form-check input[type=checkbox]{
   visibility: hidden;
 }
-.wrapper .form-check #radio1~label{
+.wrapper-question .form-check #radio1~label{
   background: url("assets/Left-option-default-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio1:checked + label{
+.wrapper-question .form-check input#radio1:checked + label{
   background: url("assets/Left-option-selected-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio2~label{
+.wrapper-question .form-check #radio2~label{
   background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio2:checked + label{
+.wrapper-question .form-check input#radio2:checked + label{
   background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio3~label{
+.wrapper-question .form-check #radio3~label{
   background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio3:checked + label{
+.wrapper-question .form-check input#radio3:checked + label{
   background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio4~label{
+.wrapper-question .form-check #radio4~label{
   background: url("assets/Right-option-default-1.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio4:checked + label{
+.wrapper-question .form-check input#radio4:checked + label{
   background: url("assets/Right-option-selected-1.png") no-repeat scroll 0 0 transparent;
 }

@@ -4,7 +4,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 const Questions = ()=> {
   return (
-    <div class="wrapper bg-image">
+    <div class="wrapper-question bg-image">
   <div class="row nav-bar">
     <div class="col-xs-1 col-xs-offset-4">
     <div class="totalt">40MINS</div>
