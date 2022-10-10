@@ -71,9 +71,7 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
     }
   };
 
-  export const logout = () =>async (dispatch:any) => {
-    console.log('auth', auth);
-    
+  export const logout = () =>async (dispatch:any) => {    
      await signOut(auth);
     dispatch(actions.updateLogout(false));
   };
