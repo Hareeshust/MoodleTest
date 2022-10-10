@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import scoreImage from "../../../assets/Score-crad.png";
 import downloadCertificate from "../../../assets/Download-certificate.png";
+import bgResult from "../../../assets/Bg-result.png";
 
 export const ResultModel = () => {
   const [passScore, setPassScore] = useState(90);
@@ -14,7 +15,7 @@ export const ResultModel = () => {
           height: "100vh",
           top: "0",
           left: "0",
-          background: "rgba(0, 0, 0, 0.5)",
+          backgroundImage: `url(${bgResult})`,
           zIndex: 10,
           pointerEvents: "all",
           display: "flex",
