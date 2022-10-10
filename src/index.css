@@ -482,6 +482,19 @@ body, html, .App, #root {
   background-size: 100% 100%;
   font-size: 20px;
 }
+.wrapper-login .form-check .radio-inline.employee-active{
+  background: url("assets/Selector-Active.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  height: 62px;
+  width: 100%;
+  padding: 18px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-size: 100% 100%;
+  font-size: 20px;
+}
+
 .wrapper-login .form-check input[type=radio],.wrapper-login .form-check input[type=checkbox]{
   visibility: hidden;
 }
@@ -538,6 +551,10 @@ body, html, .App, #root {
   text-align: center;
   background-size: 100% 100%!important;
   font-size: 27px;
+}
+.mute-icon {
+  float: right;
+  padding-right: 20px;
 }
 .wrapper-dashboard .form-check input[type=radio],.wrapper-dashboard .form-check input[type=checkbox]{
   visibility: hidden;
@@ -609,6 +626,16 @@ body, html, .App, #root {
 }
 .wrapper-question .exit {
   padding: 20px 15px 0 0;
+}
+.exit {
+  padding: 20px 15px 0 0;
+}
+.exit button{
+  background: url("assets/Exit-button.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 55px;
+  width: 100%;
+  border: none;
 }
 .wrapper-question .totalq{
   background: url("assets/Total-question.png") no-repeat scroll 0 0 transparent;

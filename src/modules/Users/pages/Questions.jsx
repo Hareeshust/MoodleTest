@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useLocation } from "react-router-dom";
+import * as actions from "../../Auth/_redux/authActions";
+import { useHistory } from "react-router-dom";
 
 const Questions = ()=> {
   const location = useLocation();
-
+  const history = useHistory();
+  const dispatch = useDispatch();
   useEffect(() => {
     console.log(location.pathname);
     console.log(location.search); 
     console.log(location.state.workstream); 
  }, [location]);
+
+ const { users, isLoggedIn } = useSelector(
+  (state: RootState) => ({
+    users: state.user.users,
+    isLoggedIn: state.auth.isLoggedIn
+  }),
+  shallowEqual
+);
+useEffect(() => {
+  if(!isLoggedIn){
+    history.push("/login");
+  }
+}, [isLoggedIn])
+ const logOut =()=>{
+  dispatch(actions.logout());
+}
 
   return (
     <div class="wrapper-question bg-image">
@@ -30,7 +49,7 @@ const Questions = ()=> {
         </div>
     </div>
     <div class="col-xs-1 exit">
-      <button></button>
+      <button onClick={logOut}></button>
     </div>
 </div>
     <div class="container">

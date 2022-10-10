@@ -38,10 +38,6 @@ function Login(props: any) {
     }),
     shallowEqual
   );
-
-  useEffect(() => {
-   // dispatch(actions.getAllUsers());
-  }, []);
   useEffect(() => {
     if(isLoggedIn){
       history.push("/home");
@@ -155,7 +151,7 @@ function Login(props: any) {
                     <div className="form-check row">
                         <div className="col-xs-12 col-md-6">
                             <input type="radio" className="form-check-input" id="radio1" name="optradio" value="option1" checked/>
-                            <label className="radio-inline" htmlFor="radio1">EMPLOYEE</label>
+                            <label className="radio-inline employee-active" htmlFor="radio1">EMPLOYEE</label>
                         </div>
                         <div className="col-xs-12 col-md-6">
                             <input type="radio" className="form-check-input" id="radio2" name="optradio" value="option2"/>

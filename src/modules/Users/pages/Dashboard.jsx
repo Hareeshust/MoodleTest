@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useHistory } from "react-router-dom";
+import * as actions from "../../Auth/_redux/authActions";
+import { RootState } from "../../../app/store";
 
 const workstream = {
   title: 'TSYS Workstream',
@@ -36,12 +38,33 @@ const WorkStreamOption = ({ options, selected, onChange }) => {
 };
 const Dashboard = ()=> {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [selectedStream, setSelectedStream] = useState();
+  const { users, isLoggedIn } = useSelector(
+    (state: RootState) => ({
+      users: state.user.users,
+      isLoggedIn: state.auth.isLoggedIn
+    }),
+    shallowEqual
+  );
+  useEffect(() => {
+    if(!isLoggedIn){
+      history.push("/login");
+    }
+    else {
+      history.push("/Dashboard");
+    }
+  }, [isLoggedIn])
   const handleClick = ()=> {
-    history.push({
+    if(selectedStream && selectedStream!== (undefined || null)){
+        history.push({
       pathname: '/questions',
       state: { workstream: selectedStream }
-  });
+   })
+    };
+  }
+  const logOut =()=>{
+    dispatch(actions.logout());
   }
 
   const handleOnChange= (e) => {
@@ -51,14 +74,18 @@ const Dashboard = ()=> {
   return (
     <div className="wrapper-dashboard bg-image">
     <div className="row nav-bar">
-      <div className="col-xs-1 col-xs-offset-10 volume">
-          <div className="form-check">
+      <div className="col-xs-1 col-xs-offset-9 volume">
+          <div className="form-check mute-icon">
               <input className="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked/>
-              <label className="form-check-label" for="check1"></label>
+              <label className="form-check-label" htmlFor="check1"></label>
           </div>
+          
       </div>
       <div className="col-xs-1 profile">
         <button></button>
+      </div>
+      <div class="col-xs-1 exit">
+          <button onClick={logOut}></button>
       </div>
   </div>
       <div className="container">
