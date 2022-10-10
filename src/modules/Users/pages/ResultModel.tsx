@@ -16,6 +16,8 @@ export const ResultModel = () => {
           top: "0",
           left: "0",
           backgroundImage: `url(${bgResult})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
           zIndex: 10,
           pointerEvents: "all",
           display: "flex",
