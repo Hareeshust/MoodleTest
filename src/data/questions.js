@@ -62,7 +62,18 @@ const questionsBundle = [{
                 { answerText: 'Posting/Settlements-Spend-Apply-Servicing', isCorrect: true },
                 { answerText: 'Apply-Spend-Posting/Settlements-Servicing', isCorrect: true },
             ],
+        },
+        {
+            type: "multipleChoice",
+            questionText: 'What are existing authorisation systems called?',
+            options: [
+                { answerText: 'HPNS', isCorrect: true },
+                { answerText: 'HP NonStop', isCorrect: true },
+                { answerText: 'Tandem', isCorrect: true },
+                { answerText: 'High Performance Nano System', isCorrect: false },
+            ],
         }
+
     ]
 },
 {
