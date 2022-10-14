@@ -11,10 +11,10 @@ const SingleQuestion = ({handleSubmit}) => {
   const questionsArray = questionsBundle[0]?.questions;
   setInterval(() => {});
   const handleClickNext=()=>{
-    handleSubmit()
+    setCurrentIndex(prevIndex=>prevIndex+1)
   }
   const questionsBundleHandler = () => {
-    switch (currentQuestion.type) {
+    switch (currentQuestion?.type) {
       case "singleChoice":
         
         return <RadioButton currentQuestion={currentQuestion}/>;
@@ -41,14 +41,23 @@ const SingleQuestion = ({handleSubmit}) => {
         <form>
           {(questionsBundleHandler())}
         </form>
+        {Array.isArray(questionsArray) && (questionsArray.length-1===currentIndex)?
         <img
+        src={nextButton}
+        alt="Submit"
+        class="nextButton"
+        onClick={
+          handleSubmit
+        }
+      />
+        :<img
                 src={nextButton}
                 alt="Next button"
                 class="nextButton"
                 onClick={
                   handleClickNext
                 }
-              />
+              />}
       </div>
     </React.Fragment>
   );
