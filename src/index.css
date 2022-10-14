@@ -12,26 +12,35 @@ code {
     monospace;
 } */
 
-
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 
 * {
   box-sizing: border-box;
 }
 body {
-  background:linear-gradient(to top right,#fc2c77 0%,#6c4079 100%);
+  background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
   min-height: 100vh;
   display: flex;
   font-weight: 400;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6,label,span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
   font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
-body, html, .App, #root {
+body,
+html,
+.App,
+#root {
   width: 100%;
   height: 100%;
 }
@@ -60,24 +69,24 @@ body, html, .App, #root {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .book-list {
-	width: 1170px;
-	margin: 0 auto;
-	z-index: 9;
-	margin-top: 50px;
-	position: relative;
-	height: 280px;
+  width: 1170px;
+  margin: 0 auto;
+  z-index: 9;
+  margin-top: 50px;
+  position: relative;
+  height: 280px;
 }
 
-.latest-date{
+.latest-date {
   color: #00c2ba;
 }
 
-.latest-desc{
-  font-size:14px;
+.latest-desc {
+  font-size: 14px;
   padding-bottom: 10px;
 }
 
@@ -113,7 +122,7 @@ body, html, .App, #root {
   border: 2px solid #fff;
 }
 
-.btn.btn-primary{
+.btn.btn-primary {
   color: #fff !important;
   background-color: #00c2ba !important;
   border-color: #00c2ba !important;
@@ -123,14 +132,14 @@ body, html, .App, #root {
   width: 150px;
 }
 
-.user-create-container{
+.user-create-container {
   /* top: 47px; */
   left: 137px;
 }
 
-.know-more{
-  background-color:#00c2ba !important;
-  border-color:#00c2ba !important;
+.know-more {
+  background-color: #00c2ba !important;
+  border-color: #00c2ba !important;
   box-shadow: 0 3px #007671;
 }
 
@@ -141,7 +150,7 @@ body, html, .App, #root {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 .details-container {
   width: 900px;
@@ -150,7 +159,7 @@ body, html, .App, #root {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .overlay {
@@ -161,7 +170,7 @@ body, html, .App, #root {
   width: 100%;
   height: 100%;
   border-radius: 3px;
-  transition: background-color .3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .slide-image {
@@ -172,7 +181,7 @@ body, html, .App, #root {
   position: relative;
   text-align: center;
   cursor: default;
-  background-color: rgba(0,0,0,.75);
+  background-color: rgba(0, 0, 0, 0.75);
   margin: 60px 0 0;
 }
 /* Common styles */
@@ -209,7 +218,6 @@ body, html, .App, #root {
 .radio-container input:checked ~ .checkmark:after {
   display: block;
 }
-
 
 .input--style-4 {
   line-height: 50px;
@@ -342,79 +350,103 @@ body, html, .App, #root {
 }
 
 .login-with-google-btn {
-  transition: background-color .3s, box-shadow .3s;
-    
+  transition: background-color 0.3s, box-shadow 0.3s;
+
   padding: 12px 16px 12px 42px;
   border: none;
   border-radius: 3px;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
-  
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+
   color: #757575;
   font-size: 14px;
   font-weight: 500;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
-  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
   background-color: white;
   background-repeat: no-repeat;
   background-position: 12px 11px;
   margin-bottom: 20px;
   &:hover {
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
   }
-  
+
   &:active {
     background-color: #eeeeee;
   }
-  
+
   &:focus {
     outline: none;
-    box-shadow: 
-      0 -1px 0 rgba(0, 0, 0, .04),
-      0 2px 4px rgba(0, 0, 0, .25),
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
       0 0 0 3px #c8dafc;
   }
-  
+
   &:disabled {
     filter: grayscale(100%);
     background-color: #ebebeb;
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
     cursor: not-allowed;
   }
 }
 
+.google-sigin {
+  background-color: rgb(255, 255, 255);
+  display: inline-flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.54);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+  padding: 0px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Roboto, sans-serif;
+  float: right;
+}
+.signin-sub {
+  margin-right: 10px;
+  background: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 2px;
+}
+.signin-text {
+  padding: 10px 10px 10px 0px;
+  font-weight: 500;
+}
 
-.wrapper-login{
-  background-image: url('assets/Bg.png');
+.wrapper-login {
+  background-image: url("assets/Bg.png");
   height: 100vh;
 }
-.wrapper-login .form-outline{
+.wrapper-login .form-outline {
   padding: 20px 0;
 }
-.wrapper-login .form-outline label{
+.wrapper-login .form-outline label {
   font-family: cursive;
   font-size: 30px;
   font-weight: bold;
   color: white;
 }
-.wrapper-login .volume{
+.wrapper-login .volume {
   padding: 20px 0 0;
 }
-.wrapper-login .volume input ~label{
+.wrapper-login .volume input ~ label {
   background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 50px;
   width: 50px;
   cursor: pointer;
 }
-.wrapper-login .volume input:checked ~label{
+.wrapper-login .volume input:checked ~ label {
   background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 50px;
   width: 50px;
   cursor: pointer;
 }
-.wrapper-login .form-outline input{
+.wrapper-login .form-outline input {
   background: url("assets/Inputbox.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 65px;
   height: 65px;
@@ -425,16 +457,16 @@ body, html, .App, #root {
   box-shadow: none;
   padding: 0 25px;
 }
-.wrapper-login .row .passreset{
+.wrapper-login .row .passreset {
   text-align: right;
   padding: 10px 20px;
   font-weight: bold;
 }
-.wrapper-login .row .passreset a{
-  color: white!important;
+.wrapper-login .row .passreset a {
+  color: white !important;
   text-decoration: none;
 }
-.wrapper-login .signin{
+.wrapper-login .signin {
   background: url("assets/Sign-in-Button.png") no-repeat scroll 0 0 transparent;
   cursor: pointer;
   border: none;
@@ -443,11 +475,12 @@ body, html, .App, #root {
   background-size: 100% 100%;
   box-shadow: none;
 }
-.wrapper-login .signin:focus{
+.wrapper-login .signin:focus {
   border: none;
 }
-.wrapper-login .form-check .radio-inline{
-  background: url("assets/Selector-Default.png") no-repeat scroll 0 0 transparent;
+.wrapper-login .form-check .radio-inline {
+  background: url("assets/Selector-Default.png") no-repeat scroll 0 0
+    transparent;
   cursor: pointer;
   height: 62px;
   width: 100%;
@@ -458,25 +491,67 @@ body, html, .App, #root {
   background-size: 100% 100%;
   font-size: 20px;
 }
-.wrapper-login .form-check input[type=radio],.wrapper-login .form-check input[type=checkbox]{
+.wrapper-login .form-check .radio-inline.employee-active {
+  background: url("assets/Selector-Active.png") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  height: 62px;
+  width: 100%;
+  padding: 18px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-size: 100% 100%;
+  font-size: 20px;
+}
+
+.wrapper-login .form-check input[type="radio"],
+.wrapper-login .form-check input[type="checkbox"] {
   visibility: hidden;
 }
-.wrapper-login .form-check .input#radio1 + label{
+.wrapper-login .form-check .input#radio1 + label {
   background: url("assets/Selector-Active.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
 }
 
-.wrapper .profile {
+.wrapper-dashboard {
+  background-image: url("assets/Bg.png");
+  height: 100vh;
+}
+
+.wrapper-dashboard .nav-bar {
+  margin: 0 !important;
+  background: url("assets/Top-Banner.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 115px;
+}
+.wrapper-dashboard .volume {
   padding: 20px 0 0;
 }
-.wrapper .profile button{
+.wrapper-dashboard .volume input ~ label {
+  background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper-dashboard .volume input:checked ~ label {
+  background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.wrapper-dashboard .profile {
+  padding: 20px 0 0;
+}
+.wrapper-dashboard .profile button {
   background: url("assets/Profile.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 55px;
   width: 55px;
   border: none;
 }
-.wrapper .form-check.dash-items .form-check-input~label{
+.wrapper-dashboard .form-check.dash-items .form-check-input ~ label {
   cursor: pointer;
   height: 200px;
   width: 100%;
@@ -484,81 +559,96 @@ body, html, .App, #root {
   color: white;
   font-weight: bold;
   text-align: center;
-  background-size: 100% 100%!important;
+  background-size: 100% 100% !important;
   font-size: 27px;
-} 
-.wrapper .form-check input[type=radio],.wrapper .form-check input[type=checkbox]{
+}
+.mute-icon {
+  float: right;
+  padding-right: 20px;
+}
+.wrapper-dashboard .form-check input[type="radio"],
+.wrapper-dashboard .form-check input[type="checkbox"] {
   visibility: hidden;
 }
-.wrapper .form-check #radio1~label{
+.wrapper-dashboard .form-check #radio1 ~ label {
   background: url("assets/1st-Tile.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio1:checked + label{
+.wrapper-dashboard .form-check input#radio1:checked + label {
   background: url("assets/1st-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio2~label{
+.wrapper-dashboard .form-check #radio2 ~ label {
   background: url("assets/2-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio2:checked + label{
+.wrapper-dashboard .form-check input#radio2:checked + label {
   background: url("assets/2-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio3~label{
+.wrapper-dashboard .form-check #radio3 ~ label {
   background: url("assets/3-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio3:checked + label{
+.wrapper-dashboard .form-check input#radio3:checked + label {
   background: url("assets/3-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio4~label{
+.wrapper-dashboard .form-check #radio4 ~ label {
   background: url("assets/4-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio4:checked + label{
+.wrapper-dashboard .form-check input#radio4:checked + label {
   background: url("assets/4-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio5~label{
+.wrapper-dashboard .form-check #radio5 ~ label {
   background: url("assets/5-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio5:checked + label{
+.wrapper-dashboard .form-check input#radio5:checked + label {
   background: url("assets/5-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check #radio6~label{
+.wrapper-dashboard .form-check #radio6 ~ label {
   background: url("assets/6-Tile-Default.png") no-repeat scroll 0 0 transparent;
 }
-.wrapper .form-check input#radio6:checked + label{
+.wrapper-dashboard .form-check input#radio6:checked + label {
   background: url("assets/6-Tile-Active.png") no-repeat scroll 0 0 transparent;
-} 
+}
 
-.wrapper{
-  background-image: url('assets/Bg.png');
+.wrapper-question {
+  background-image: url("assets/Bg.png");
   height: 100vh;
 }
 
-.wrapper .nav-bar{
-  margin: 0!important;
+.wrapper-question .nav-bar {
+  margin: 0 !important;
   background: url("assets/Top-Banner.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 115px;
 }
-.wrapper .volume{
+.wrapper-question .volume {
   padding: 20px 0 0;
 }
-.wrapper .volume input ~label{
+.wrapper-question .volume input ~ label {
   background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 50px;
   width: 50px;
   cursor: pointer;
 }
-.wrapper .volume input:checked ~label{
+.wrapper-question .volume input:checked ~ label {
   background: url("assets/Music-Off.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 50px;
   width: 50px;
   cursor: pointer;
 }
-.wrapper .exit {
+.wrapper-question .exit {
   padding: 20px 15px 0 0;
 }
-.wrapper .totalq{
+.exit {
+  padding: 20px 15px 0 0;
+}
+.exit button {
+  background: url("assets/Exit-button.png") no-repeat scroll 0 0 transparent;
+  background-size: 100% 100%;
+  height: 55px;
+  width: 100%;
+  border: none;
+}
+.wrapper-question .totalq {
   background: url("assets/Total-question.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 60px;
@@ -569,7 +659,7 @@ body, html, .App, #root {
   font-weight: bold;
   font-size: 20px;
 }
-.wrapper .totalt{
+.wrapper-question .totalt {
   background: url("assets/Total-time.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 60px;
@@ -580,28 +670,28 @@ body, html, .App, #root {
   font-weight: bold;
   font-size: 20px;
 }
-.wrapper .exit button{
+.wrapper-question .exit button {
   background: url("assets/Exit-button.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 55px;
   width: 100%;
   border: none;
 }
-.wrapper .question{
+.wrapper-question .question {
   background: url("assets/Question-bg.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 300px;
   width: 100%;
-  COLOR: white;
+  color: white;
   padding: 50px 150px;
   font-size: 45px;
   font-weight: bold;
   text-align: center;
 }
-.wrapper .question .title{
+.wrapper-question .question .title {
   font-size: 20px;
 }
-.wrapper .timer{
+.wrapper-question .timer {
   background: url("assets/Timer.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 120px;
@@ -613,7 +703,7 @@ body, html, .App, #root {
   font-weight: bold;
   z-index: 10;
 }
-.wrapper .form-check.dash-items .form-check-input~label{
+.wrapper-question .form-check.dash-items .form-check-input ~ label {
   cursor: pointer;
   height: 200px;
   width: 100%;
@@ -621,36 +711,110 @@ body, html, .App, #root {
   color: white;
   font-weight: bold;
   text-align: center;
-  background-size: 100% 100%!important;
+  background-size: 100% 100% !important;
   font-size: 27px;
-  position: absolute;
-  top: -47px;
+  /* position: absolute;
+  top: -47px; */
   left: 0;
 }
-.wrapper .form-check input[type=radio],.wrapper .form-check input[type=checkbox]{
+.wrapper-question .form-check input[type="radio"],
+.wrapper-question .form-check input[type="checkbox"] {
   visibility: hidden;
 }
-.wrapper .form-check #radio1~label{
-  background: url("assets/Left-option-default-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check #radio1 ~ label {
+  background: url("assets/Left-option-default-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check input#radio1:checked + label{
-  background: url("assets/Left-option-selected-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check input#radio1:checked + label {
+  background: url("assets/Left-option-selected-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check #radio2~label{
-  background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check #radio2 ~ label {
+  background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check input#radio2:checked + label{
-  background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check input#radio2:checked + label {
+  background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check #radio3~label{
-  background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check #radio3 ~ label {
+  background: url("assets/Center-option-default-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check input#radio3:checked + label{
-  background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check input#radio3:checked + label {
+  background: url("assets/Center-option-selected-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check #radio4~label{
-  background: url("assets/Right-option-default-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check #radio4 ~ label {
+  background: url("assets/Right-option-default-1.png") no-repeat scroll 0 0
+    transparent;
 }
-.wrapper .form-check input#radio4:checked + label{
-  background: url("assets/Right-option-selected-1.png") no-repeat scroll 0 0 transparent;
+.wrapper-question .form-check input#radio4:checked + label {
+  background: url("assets/Right-option-selected-1.png") no-repeat scroll 0 0
+    transparent;
+}
+
+
+
+
+/* result-modal css starts here */
+.backDrop {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-image: url("./assets/Bg-result.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 10;
+  pointer-events: all;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalTextContainerSuccess {
+  position: absolute;
+  text-align: center;
+  bottom: 2rem;
+}
+
+.modalTextContainerFailuer {
+  position: absolute;
+  text-align: center;
+  bottom: 8rem;
+}
+.modalHeadderFont {
+  color: #fff;
+  font-weight: bolder;
+  font-size: 4rem;
+}
+.modalScoreFont {
+  color: #fff;
+  font-weight: bolder;
+  font-size: 6rem;
+}
+.resultAction{
+  cursor:pointer;
+}
+/* result-modal css ends here */
+
+.nextButton {
+  cursor: pointer;
+  border: none;
+  background-size: 100% 100%;
+  height: 55px;
+  box-shadow: none;
+  float: right;
+  margin: 10px 10px 0 0;
+}
+
+.topAlign{
+  top: -47px;
 }

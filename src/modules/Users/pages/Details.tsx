@@ -37,6 +37,9 @@ function Users() {
     if(!isLoggedIn){
       history.push("/login");
     }
+    else {
+      history.push("/Dashboard");
+    }
   }, [isLoggedIn])
   const [user, setUser] = useState<any>({});
   onAuthStateChanged(auth, (currentUser:any)=>{

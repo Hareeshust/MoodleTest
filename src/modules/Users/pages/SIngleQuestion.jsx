@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { questionsBundle } from "../../../data/questions";
 import Checkbox from "../../Components/InputTypes/Checkbox";
 import RadioButton from "../../Components/InputTypes/RadioButton";
+import nextButton from "../../../assets/Next-button.png";
 
-const SingleQuestion = () => {
+const SingleQuestion = ({handleSubmit}) => {
   const [currentQuestion, setCurrentQuestion] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timer, setTimer] = useState(30);
   const questionsArray = questionsBundle[0]?.questions;
   setInterval(() => {});
+  const handleClickNext=()=>{
+    handleSubmit()
+  }
   const questionsBundleHandler = () => {
     switch (currentQuestion.type) {
       case "singleChoice":
@@ -33,10 +37,18 @@ const SingleQuestion = () => {
           <p className="question-content">{currentQuestion?.questionText}</p>
         </div>
       </div>
-      <div className="col-xs-12 mt">
+      <div className="col-xs-12 mt topAlign">
         <form>
           {(questionsBundleHandler())}
         </form>
+        <img
+                src={nextButton}
+                alt="Next button"
+                class="nextButton"
+                onClick={
+                  handleClickNext
+                }
+              />
       </div>
     </React.Fragment>
   );

@@ -1,8 +1,9 @@
 import * as requestFromServer from "./authCrud";
 import { authSlice } from "./authSlice";
 import {user} from "../../../data/user";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth';
-import {auth} from '../../../firebaseconfig'
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import {auth, provider} from '../../../firebaseconfig'
+
 const { actions } = authSlice;
 
 export const getAllUsers = () => (dispatch: any) => {
@@ -49,9 +50,29 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
         //   );
         // } 
   };
+  export const googleSignIn = (dispatch: any) => async () => {
+    try {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log(result);
+          const { displayName, email, photoURL } = result?.user;
+          localStorage.setItem("name", displayName || "");
+          localStorage.setItem("email", email || "");
+          localStorage.setItem("pic", photoURL || "");
+          if (result?.user) {
+            dispatch(actions.updateUser(result?.user));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
 
-  export const logout = () =>async (dispatch:any) => {
-    await signOut(auth);
+export const logout = () =>async (dispatch:any) => {    
+     await signOut(auth);
     dispatch(actions.updateLogout(false));
   };
   
