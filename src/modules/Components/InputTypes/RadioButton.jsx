@@ -7,7 +7,7 @@ const RadioButton = ({currentQuestion}) => {
     setSelectedValue(event.target.value);  
   }
   return (
-    <div className="form-check row dash-items" onChange={onChangeHandler}>
+    <div className="form-check row dash-items">
       {currentQuestion?.options?.map((option,optionIndex)=> <div className="col-xs-12 col-md-3" key={option.answerText}>
         <input
           type="radio"
@@ -16,6 +16,7 @@ const RadioButton = ({currentQuestion}) => {
           name={currentQuestion?.questionText}
           value={option.answerText}
           checked={option.answerText===selectedValue}
+          onChange={onChangeHandler}
         />
         <label className="radio-inline" htmlFor={`radio${optionIndex+1}`}>
           {option.answerText}

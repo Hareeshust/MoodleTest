@@ -1,5 +1,5 @@
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../../../firebaseconfig";
+import { db } from "../../../firebaseconfig";
 import { questionSlice } from "./questionsSlice";
 const { actions } = questionSlice;
 export const setQuestion =(selectedStream:any)=>async(dispatch:any)=>{

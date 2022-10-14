@@ -17,7 +17,7 @@ const Checkbox = ({currentQuestion}) => {
     }
   }
   return (
-    <div className="form-check row dash-items" onChange={onChangeHandler}>
+    <div className="form-check row dash-items">
     {currentQuestion?.options?.map((option,optionIndex)=> <div className="col-xs-12 col-md-3" key={option.answerText}>
       <input
         type="checkbox"
@@ -26,6 +26,7 @@ const Checkbox = ({currentQuestion}) => {
         name={currentQuestion?.questionText}
         value={option.answerText}
         checked={selectedValue.includes(option.answerText)}
+        onChange={onChangeHandler}
       />
       <label className="radio-inline" htmlFor={`radio${optionIndex+1}`}>
         {option.answerText}

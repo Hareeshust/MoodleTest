@@ -4,12 +4,15 @@ import Checkbox from "../../Components/InputTypes/Checkbox";
 import RadioButton from "../../Components/InputTypes/RadioButton";
 import nextButton from "../../../assets/Next-button.png";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
+
 
 const SingleQuestion = ({handleSubmit}) => {
   const [currentQuestion, setCurrentQuestion] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timer, setTimer] = useState(30);
   const questionsArray = useSelector(state=>state?.questions?.questionData?.questions)
+  const history=useHistory()
   const handleClickNext=()=>{
     setCurrentIndex(prevIndex=>prevIndex+1)
   }
@@ -25,7 +28,13 @@ const SingleQuestion = ({handleSubmit}) => {
     }
   };
   useEffect(() => {
-    setCurrentQuestion(questionsArray[currentIndex]);
+    if(questionsArray?.length){
+      setCurrentQuestion(questionsArray[currentIndex]);
+    }
+    else{
+      history.push("/")
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, questionsArray]);
   return (
     <React.Fragment>

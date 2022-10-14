@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userReducer from '../modules/Users/_redux/usersSlice';
 import authReducer from '../modules/Auth/_redux/authSlice';
-import questionReducer from '../modules/Users/pages/_redux/Questions/questionsSlice';
+import questionReducer from '../modules/Questions/_redux/questionsSlice';
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";

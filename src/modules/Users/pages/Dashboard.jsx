@@ -6,7 +6,7 @@ import { RootState } from "../../../app/store";
 import nextButton from "../../../assets/Next-button.png";
 import { db } from "../../../firebaseconfig";
 import { doc, getDoc } from "firebase/firestore";
-import { setQuestion } from "./_redux/Questions/questionsActions";
+import { setQuestion } from "../../Questions/_redux/questionsActions";
 
 const workstream = {
   title: "TSYS Workstream",

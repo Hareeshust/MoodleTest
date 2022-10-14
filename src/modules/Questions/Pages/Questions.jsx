@@ -3,7 +3,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useLocation } from "react-router-dom";
 import * as actions from "../../Auth/_redux/authActions";
 import { useHistory } from "react-router-dom";
-import ResultModal from "./ResultModal";
+import ResultModal from "../../Users/pages/ResultModal";
 import SingleQuestion from "./SIngleQuestion";
 
 const Questions = () => {
@@ -67,7 +67,7 @@ const Questions = () => {
               id="check1"
               name="option1"
               value="something"
-              checked
+              defaultChecked
             />
             <label class="form-check-label" for="check1"></label>
           </div>
