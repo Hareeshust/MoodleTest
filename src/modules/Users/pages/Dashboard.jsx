@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 import * as actions from "../../Auth/_redux/authActions";
 import { RootState } from "../../../app/store";
 import nextButton from "../../../assets/Next-button.png";
+import { db } from "../../../firebaseconfig";
+import { doc, getDoc } from "firebase/firestore";
+import { setQuestion } from "./_redux/Questions/questionsActions";
 
 const workstream = {
   title: "TSYS Workstream",
@@ -43,14 +46,19 @@ const Dashboard = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [selectedStream, setSelectedStream] = useState();
+
   const { users, isLoggedIn } = useSelector(
-    (state: RootState) => ({
+    (state) => ({
       users: state.user.users,
       isLoggedIn: state.auth.isLoggedIn,
     }),
     shallowEqual
   );
-
+  useEffect(()=>{
+    if(selectedStream){
+      dispatch(setQuestion(selectedStream))
+    }
+  },[selectedStream])
   useEffect(() => {
     if (!isLoggedIn) {
       history.push("/login");

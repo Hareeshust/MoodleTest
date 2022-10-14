@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userReducer from '../modules/Users/_redux/usersSlice';
 import authReducer from '../modules/Auth/_redux/authSlice';
+import questionReducer from '../modules/Users/pages/_redux/Questions/questionsSlice';
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
@@ -8,7 +9,8 @@ import { useDispatch } from 'react-redux'
 
 export const rootReducer = combineReducers({
   user: userReducer,
-  auth: authReducer
+  auth: authReducer,
+  questions:questionReducer
 });
 
 const persistConfig = {

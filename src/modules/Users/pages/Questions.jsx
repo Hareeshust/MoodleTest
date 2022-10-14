@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import * as actions from "../../Auth/_redux/authActions";
 import { useHistory } from "react-router-dom";
 import ResultModal from "./ResultModal";
-import SIngleQuestion from "./SIngleQuestion";
+import SingleQuestion from "./SIngleQuestion";
 
 const Questions = () => {
   const location = useLocation();
@@ -79,7 +79,7 @@ const Questions = () => {
       <div class="container">
         <div class="row">
             <div class="timer">28:00</div>
-          <SIngleQuestion handleSubmit={handleSubmit}/>
+          <SingleQuestion handleSubmit={handleSubmit}/>
         </div>
       </div>
       {showModal && (

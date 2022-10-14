@@ -3,13 +3,13 @@ import { questionsBundle } from "../../../data/questions";
 import Checkbox from "../../Components/InputTypes/Checkbox";
 import RadioButton from "../../Components/InputTypes/RadioButton";
 import nextButton from "../../../assets/Next-button.png";
+import { useSelector } from "react-redux";
 
 const SingleQuestion = ({handleSubmit}) => {
   const [currentQuestion, setCurrentQuestion] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timer, setTimer] = useState(30);
-  const questionsArray = questionsBundle[0]?.questions;
-  setInterval(() => {});
+  const questionsArray = useSelector(state=>state?.questions?.questionData?.questions)
   const handleClickNext=()=>{
     setCurrentIndex(prevIndex=>prevIndex+1)
   }
