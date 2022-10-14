@@ -611,6 +611,7 @@ body, html, .App, #root {
   padding: 40px 35px;
   font-size: 22px;
   font-weight: bold;
+  z-index: 10;
 }
 .wrapper .form-check.dash-items .form-check-input~label{
   cursor: pointer;
