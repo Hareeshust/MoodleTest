@@ -40,7 +40,7 @@ const Questions = () => {
 
   const handleSubmit = () => {
     setShowModal(true);
-    setPassed(false);
+    setPassed(true);
     setTestScore(88);
   };
 
