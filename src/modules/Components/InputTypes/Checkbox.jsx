@@ -28,7 +28,7 @@ const Checkbox = ({currentQuestion}) => {
         checked={selectedValue.includes(option.answerText)}
         onChange={onChangeHandler}
       />
-      <label className="radio-inline" htmlFor={`radio${optionIndex+1}`}>
+      <label className="col-11 radio-inline" htmlFor={`radio${optionIndex+1}`}>
         {option.answerText}
       </label>
     </div>)}

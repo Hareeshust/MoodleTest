@@ -18,7 +18,7 @@ const RadioButton = ({currentQuestion}) => {
           checked={option.answerText===selectedValue}
           onChange={onChangeHandler}
         />
-        <label className="radio-inline" htmlFor={`radio${optionIndex+1}`}>
+        <label className="col-11 radio-inline" htmlFor={`radio${optionIndex+1}`}>
           {option.answerText}
         </label>
       </div>)}
