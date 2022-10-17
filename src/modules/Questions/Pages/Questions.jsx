@@ -5,6 +5,7 @@ import * as actions from "../../Auth/_redux/authActions";
 import { useHistory } from "react-router-dom";
 import ResultModal from "../../Users/pages/ResultModal";
 import SingleQuestion from "./SIngleQuestion";
+import Certificate from "../../Users/pages/Certificate";
 
 const Questions = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const Questions = () => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [passed, setPassed] = useState(true);
+  const[showCertificate,setShowCertificate] = useState(false);
   const [testScore, setTestScore] = useState(50);
 
   useEffect(() => {
@@ -40,14 +42,19 @@ const Questions = () => {
 
   const handleSubmit = () => {
     setShowModal(true);
-    setPassed(false);
+    setPassed(true);
     setTestScore(88);
   };
 
   const hideModalHandler = () => {
     setShowModal(false);
-    setTestScore(0);
+    setShowCertificate(true);
+    
   };
+  const hideCertificateModal = ()=>{
+    setShowCertificate(false);
+    setTestScore(0);
+  }
 
   return (
     <div class="wrapper-question bg-image">
@@ -89,6 +96,15 @@ const Questions = () => {
           closeModal={hideModalHandler}
         />
       )}
+    {showCertificate && (
+        <Certificate
+        name={"User Name"}
+        score={testScore}
+        completionTime={27}
+        closeModal={hideCertificateModal}
+      />
+      )}
+
     </div>
   );
 };
