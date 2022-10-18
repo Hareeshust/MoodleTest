@@ -694,7 +694,7 @@ html,
   width: 100%;
   color: white;
   padding: 50px 150px;
-  font-size: 3rem;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
 }
@@ -722,7 +722,7 @@ html,
   font-weight: bold;
   text-align: center;
   background-size: 100% 100% !important;
-  font-size: 2rem;
+  font-size: 18px;
   /* position: absolute;
   top: -47px; */
   left: 0;
