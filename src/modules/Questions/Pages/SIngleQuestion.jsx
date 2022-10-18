@@ -1,30 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { questionsBundle } from "../../../data/questions";
 import Checkbox from "../../Components/InputTypes/Checkbox";
 import RadioButton from "../../Components/InputTypes/RadioButton";
 import nextButton from "../../../assets/Next-button.png";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { QuestionContext } from "../QuestionContext";
 
 
 const SingleQuestion = ({handleSubmit}) => {
-  const [currentQuestion, setCurrentQuestion] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [timer, setTimer] = useState(30);
   const questionsArray = useSelector(state=>state?.questions?.questionData?.questions)
   const history=useHistory()
+  const { setTestScore,
+    setPercentage,
+    currentQuestion,
+    setCurrentQuestion,
+    currentIndex,
+    setCurrentIndex}=useContext(QuestionContext)
+
   const handleClickNext=()=>{
     setCurrentIndex(prevIndex=>prevIndex+1)
+  }
+  const calculateScore=(selected)=>{
+    if(currentQuestion.type==="singleChoice"){
+      const answerSelected=currentQuestion?.options?.find(singleOption=>singleOption===selected)
+      if(answerSelected.isCorrect){
+        setTestScore(prevScore=>prevScore+1)
+        setPercentage(prevScore=>
+          (prevScore+1/questionsArray?.length)/100
+        )
+      }
+    }
+    if(currentQuestion.type==="multipleChoice"){
+      console.log("multipleChoice")
+    }
   }
   const questionsBundleHandler = () => {
     switch (currentQuestion?.type) {
       case "singleChoice":
         
-        return <RadioButton currentQuestion={currentQuestion}/>;
+        return <RadioButton/>;
       case "multipleChoice":
-        return <Checkbox  currentQuestion={currentQuestion} />;
+        return <Checkbox  />;
       default:
-        <Checkbox  currentQuestion={currentQuestion} />;
+        <Checkbox  />;
     }
   };
   useEffect(() => {
@@ -50,24 +70,7 @@ const SingleQuestion = ({handleSubmit}) => {
         <form>
           {(questionsBundleHandler())}
         </form>
-        {Array.isArray(questionsArray) && (questionsArray.length-1===currentIndex)?
-        <img
-        src={nextButton}
-        alt="Submit"
-        class="nextButton"
-        onClick={
-          handleSubmit
-        }
-      />
-        :<img
-                src={nextButton}
-                alt="Next button"
-                class="nextButton"
-                onClick={
-                  handleClickNext
-                }
-              />}
-      </div>
+        </div>
     </React.Fragment>
   );
 };

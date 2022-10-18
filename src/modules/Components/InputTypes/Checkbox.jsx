@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { QuestionContext } from "../../Questions/QuestionContext";
+import NextButton from "./Button";
 
-const Checkbox = ({currentQuestion}) => {
+const Checkbox = () => {
   const [selectedValue,setSelectedValue]=useState([])
+  const {currentQuestion}=useContext(QuestionContext)
+
   function onChangeHandler(event) {
     if(selectedValue.includes(event.target.value)){
       const array=[...selectedValue]
@@ -17,6 +21,7 @@ const Checkbox = ({currentQuestion}) => {
     }
   }
   return (
+    <React.Fragment>
     <div className="form-check row dash-items">
     {currentQuestion?.options?.map((option,optionIndex)=> <div className="col-xs-12 col-md-3" key={option.answerText}>
       <input
@@ -33,6 +38,8 @@ const Checkbox = ({currentQuestion}) => {
       </label>
     </div>)}
   </div>
+  <NextButton selectedValue={selectedValue}/>
+  </React.Fragment>
   );
 };
 

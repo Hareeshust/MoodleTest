@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useLocation } from "react-router-dom";
 import * as actions from "../../Auth/_redux/authActions";
@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import ResultModal from "../../Users/pages/ResultModal";
 import SingleQuestion from "./SIngleQuestion";
 import Certificate from "../../Users/pages/Certificate";
+import { QuestionContext } from "../QuestionContext";
 
 const Questions = () => {
   const location = useLocation();
@@ -13,8 +14,8 @@ const Questions = () => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [passed, setPassed] = useState(true);
-  const[showCertificate,setShowCertificate] = useState(false);
-  const [testScore, setTestScore] = useState(50);
+  const [showCertificate, setShowCertificate] = useState(false);
+  const {testScore, setTestScore}=useContext(QuestionContext)
 
   useEffect(() => {
     console.log(location?.pathname);
@@ -49,12 +50,11 @@ const Questions = () => {
   const hideModalHandler = () => {
     setShowModal(false);
     setShowCertificate(true);
-    
   };
-  const hideCertificateModal = ()=>{
+  const hideCertificateModal = () => {
     setShowCertificate(false);
     setTestScore(0);
-  }
+  };
 
   return (
     <div class="wrapper-question bg-image">
@@ -85,8 +85,10 @@ const Questions = () => {
       </div>
       <div class="container">
         <div class="row">
-            <div class="timer">28:00</div>
-          <SingleQuestion handleSubmit={handleSubmit}/>
+          <div class="timer">28:00</div>
+          <SingleQuestion
+            handleSubmit={handleSubmit}
+          />
         </div>
       </div>
       {showModal && (
@@ -96,15 +98,14 @@ const Questions = () => {
           closeModal={hideModalHandler}
         />
       )}
-    {showCertificate && (
+      {showCertificate && (
         <Certificate
-        name={"User Name"}
-        score={testScore}
-        completionTime={27}
-        closeModal={hideCertificateModal}
-      />
+          name={"User Name"}
+          score={testScore}
+          completionTime={27}
+          closeModal={hideCertificateModal}
+        />
       )}
-
     </div>
   );
 };

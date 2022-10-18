@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { QuestionContext } from "../../Questions/QuestionContext";
+import NextButton from "./Button";
 
-const RadioButton = ({currentQuestion}) => {
+const RadioButton = () => {
   const [selectedValue,setSelectedValue]=useState(null)
-  
+  const {currentQuestion}=useContext(QuestionContext)
   function onChangeHandler(event) {
     setSelectedValue(event.target.value);  
   }
   return (
+    <React.Fragment>
     <div className="form-check row dash-items">
       {currentQuestion?.options?.map((option,optionIndex)=> <div className="col-xs-12 col-md-3" key={option.answerText}>
         <input
@@ -23,6 +26,8 @@ const RadioButton = ({currentQuestion}) => {
         </label>
       </div>)}
     </div>
+    <NextButton selectedValue={selectedValue}/>
+    </React.Fragment>
   );
 };
 
