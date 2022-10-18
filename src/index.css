@@ -562,6 +562,16 @@ html,
   background-size: 100% 100% !important;
   font-size: 27px;
 }
+.answer_main_div{
+  display: flex !important;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.answer_radio{
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
 .mute-icon {
   float: right;
   padding-right: 20px;
@@ -609,7 +619,7 @@ html,
 
 .wrapper-question {
   background-image: url("assets/Bg.png");
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .wrapper-question .nav-bar {
@@ -684,7 +694,7 @@ html,
   width: 100%;
   color: white;
   padding: 50px 150px;
-  font-size: 45px;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
 }
@@ -707,12 +717,12 @@ html,
   cursor: pointer;
   min-height: 200px;
   width: 100%;
-  padding: 89px 12px 125px 12px;
+  padding: 79px 15px 100px 15px;
   color: white;
   font-weight: bold;
   text-align: center;
   background-size: 100% 100% !important;
-  font-size: 2.6rem;
+  font-size: 2rem;
   /* position: absolute;
   top: -47px; */
   left: 0;

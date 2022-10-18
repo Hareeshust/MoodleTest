@@ -8,7 +8,7 @@ import { useHistory } from "react-router";
 import { QuestionContext } from "../QuestionContext";
 
 
-const SingleQuestion = ({handleSubmit}) => {
+const SingleQuestion = () => {
   const [timer, setTimer] = useState(30);
   const questionsArray = useSelector(state=>state?.questions?.questionData?.questions)
   const history=useHistory()

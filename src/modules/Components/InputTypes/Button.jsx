@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import nextButton from "../../../assets/Next-button.png";
 import { QuestionContext } from "../../Questions/QuestionContext";
 
-const NextButton = ({ selectedValue, handleSubmit }) => {
+const NextButton = ({ selectedValue }) => {
   const questionsArray = useSelector(
     (state) => state?.questions?.questionData?.questions
   );
   const {
     currentIndex,
-    handleClickNext
+    handleClickNext,
+    handleSubmit
   } = useContext(QuestionContext);
 
 
