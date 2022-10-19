@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { questionsBundle } from "../../../data/questions";
 import Checkbox from "../../Components/InputTypes/Checkbox";
 import RadioButton from "../../Components/InputTypes/RadioButton";
@@ -7,54 +7,69 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { QuestionContext } from "../QuestionContext";
 
-
 const SingleQuestion = () => {
   const [timer, setTimer] = useState(30);
-  const questionsArray = useSelector(state=>state?.questions?.questionData?.questions)
-  const history=useHistory()
-  const { setTestScore,
+  const questionsArray = useSelector(
+    (state) => state?.questions?.questionData?.questions
+  );
+  const history = useHistory();
+  const {
+    setTestScore,
     setPercentage,
     currentQuestion,
     setCurrentQuestion,
     currentIndex,
-    setCurrentIndex}=useContext(QuestionContext)
+    setCurrentIndex,
+  } = useContext(QuestionContext);
 
-  const handleClickNext=()=>{
-    setCurrentIndex(prevIndex=>prevIndex+1)
-  }
-  const calculateScore=(selected)=>{
-    if(currentQuestion.type==="singleChoice"){
-      const answerSelected=currentQuestion?.options?.find(singleOption=>singleOption===selected)
-      if(answerSelected.isCorrect){
-        setTestScore(prevScore=>prevScore+1)
-        setPercentage(prevScore=>
-          (prevScore+1/questionsArray?.length)/100
-        )
+  const handleClickNext = () => {
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+  const calculateScore = (selected) => {
+    if (currentQuestion.type === "singleChoice") {
+      const answerSelected = currentQuestion?.options?.find(
+        (singleOption) => singleOption === selected
+      );
+      if (answerSelected.isCorrect) {
+        setTestScore((prevScore) => prevScore + 1);
+        setPercentage(
+          (prevScore) => (prevScore + 1 / questionsArray?.length) / 100
+        );
       }
     }
-    if(currentQuestion.type==="multipleChoice"){
-      console.log("multipleChoice")
+    if (currentQuestion.type === "multipleChoice") {
+      console.log("multipleChoice");
     }
-  }
+  };
   const questionsBundleHandler = () => {
     switch (currentQuestion?.type) {
       case "singleChoice":
-        
-        return <RadioButton/>;
+        return (
+          <Fragment key={currentQuestion?.questionText}>
+            <RadioButton />
+          </Fragment>
+        );
       case "multipleChoice":
-        return <Checkbox  />;
+        return (
+          <Fragment key={currentQuestion?.questionText}>
+            <Checkbox />
+          </Fragment>
+        );
       default:
-        <Checkbox  />;
+        return (
+          <Fragment key={currentQuestion?.questionText}>
+            <Checkbox />
+          </Fragment>
+        );
     }
   };
   useEffect(() => {
-    if(questionsArray?.length){
+    if (questionsArray?.length) {
       setCurrentQuestion(questionsArray[currentIndex]);
+    } else {
+      history.push("/");
     }
-    else{
-      history.push("/")
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, questionsArray]);
   return (
     <React.Fragment>
@@ -67,10 +82,8 @@ const SingleQuestion = () => {
         </div>
       </div>
       <div className="col-xs-12 mt topAlign">
-        <form>
-          {(questionsBundleHandler())}
-        </form>
-        </div>
+        <form>{questionsBundleHandler()}</form>
+      </div>
     </React.Fragment>
   );
 };

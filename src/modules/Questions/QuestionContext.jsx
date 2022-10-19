@@ -4,10 +4,12 @@ import * as actions from "../Auth/_redux/authActions";
 import { Questions } from "../Users";
 import ResultModal from "../Users/pages/ResultModal";
 import Certificate from "../Users/pages/Certificate";
+import { useHistory } from "react-router";
 export const QuestionContext = createContext();
 
 export default function QuestionContextContainer() {
   const dispatch = useDispatch();
+  const history=useHistory()
   const questionsArray = useSelector(
     (state) => state?.questions?.questionData?.questions
   );
@@ -19,6 +21,7 @@ export default function QuestionContextContainer() {
   const [passed, setPassed] = useState(true);
   const [showCertificate, setShowCertificate] = useState(false);
   const calculateScore = (selectedValue) => {
+    console.log(selectedValue)
     if (currentQuestion.type === "singleChoice") {
       if (!selectedValue) return;
       const answerSelected = currentQuestion?.options?.find(
@@ -50,6 +53,7 @@ export default function QuestionContextContainer() {
             2
           );
           setPercentage(percentage);
+        
           return score;
         });
       }
@@ -60,8 +64,8 @@ export default function QuestionContextContainer() {
     setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
-  const handleSubmit = (selectedValue) => {
-    calculateScore(selectedValue);
+  const handleSubmit = async(selectedValue) => {
+    await calculateScore(selectedValue);
     setShowModal(true);
     testScore >= 60 ? setPassed(true) : setPassed(false);
   };
@@ -79,7 +83,7 @@ export default function QuestionContextContainer() {
   const hideCertificateModal = () => {
     setShowCertificate(false);
     setTestScore(0);
-    logOut();
+    history.push("/dashboard")
   };
 
   const logOut = () => {
@@ -104,7 +108,7 @@ export default function QuestionContextContainer() {
       {showModal && (
         <ResultModal
           isPassed={passed}
-          score={testScore}
+          score={percentage}
           closeModal={hideModalHandler}
         />
       )}
@@ -112,7 +116,7 @@ export default function QuestionContextContainer() {
       {showCertificate && (
         <Certificate
           name={"User Name"}
-          score={testScore}
+          score={percentage}
           completionTime={27}
           closeModal={hideCertificateModal}
         />
