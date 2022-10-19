@@ -23,7 +23,7 @@ const NextButton = ({ selectedValue }) => {
           src={submitButton}
           alt="Submit"
           class="nextButton"
-          onClick={handleSubmit}
+          onClick={()=>handleSubmit(selectedValue)}
         />
       ) : (
         <img

@@ -9,7 +9,7 @@ const RadioButton = () => {
     setSelectedValue(event.target.value);  
   }
   return (
-    <React.Fragment>
+    <React.Fragment key={currentQuestion?.questionText}>
     <div className="form-check row dash-items answer_main_div">
       {currentQuestion?.options?.map((option,optionIndex)=> <div className="col-xs-12 col-md-3 answer_radio" key={option.answerText}>
         <input
