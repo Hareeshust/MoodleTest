@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import nextButton from "../../../assets/Next-button.png";
+import submitButton from "../../../assets/Submitt.png";
 import { QuestionContext } from "../../Questions/QuestionContext";
 
 const NextButton = ({ selectedValue }) => {
@@ -19,7 +20,7 @@ const NextButton = ({ selectedValue }) => {
       {Array.isArray(questionsArray) &&
       questionsArray.length - 1 === currentIndex ? (
         <img
-          src={nextButton}
+          src={submitButton}
           alt="Submit"
           class="nextButton"
           onClick={handleSubmit}
