@@ -60,7 +60,8 @@ export default function QuestionContextContainer() {
     setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (selectedValue) => {
+    calculateScore(selectedValue);
     setShowModal(true);
     testScore >= 60 ? setPassed(true) : setPassed(false);
   };
