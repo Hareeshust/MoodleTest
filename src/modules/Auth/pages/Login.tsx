@@ -83,58 +83,6 @@ function Login(props: any) {
         });
   }
   return (
-    // <div className="auth-inner">
-    //     <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" >
-    //       Sign in with Google
-    //     </button>
-
-    //     {/* <button type="button" className="login-with-google-btn" disabled>
-    //       Sign in with Google
-    //     </button> */}
-    //     <form
-    //     onSubmit={formik.handleSubmit}
-    //     >
-    //       {loginFailure && <Alert variant="danger">
-    //         Invalid login details
-    //       </Alert>}
-
-    //             <h3>Sign In</h3>
-
-    //             <div className="form-group">
-    //                 <label>User Name</label>
-    //                 <input type="text" className="form-control" placeholder="Enter Username"
-    //                 {...formik.getFieldProps("username")}
-    //                 />
-    //                   {formik.touched.username && formik.errors.username ? (
-    //         <div className="fv-plugins-message-container">
-    //           <div className="fv-help-block">{formik.errors.username}</div>
-    //         </div>
-    //       ) : null}
-    //             </div>
-
-    //             <div className="form-group">
-    //                 <label>Password</label>
-    //                 <input type="password" className="form-control" placeholder="Enter Password"   {...formik.getFieldProps("password")}/>
-    //                 {formik.touched.password && formik.errors.password ? (
-    //         <div className="fv-plugins-message-container">
-    //           <div className="fv-help-block">{formik.errors.password}</div>
-    //         </div>
-    //       ) : null}
-    //             </div>
-
-    //             <div className="form-group">
-    //                 <div className="custom-control custom-checkbox">
-    //                     <input type="checkbox" className="custom-control-input" id="customCheck1" />
-    //                     <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-    //                 </div>
-    //             </div>
-
-    //             <button type="submit" className="btn btn-primary btn-block">LOGIN</button>
-    //             <p className="forgot-password text-right">
-    //                 Forgot <a href="#">password?</a>
-    //             </p>
-    //         </form>
-    //         </div>
     <div className="wrapper-login bg-image">
     <div className="container">
         <div className="row">
@@ -159,8 +107,8 @@ function Login(props: any) {
                         </div>
                       </div>
               <div className="form-outline">
-                <div>
-                  <button type="button" onClick={googleSignin} className="google-sigin">
+                <div className="google-text">
+                  <button type="button" onClick={googleSignin} className="google-sigin google-change">
                     <div className="signin-sub">
                       <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fill-rule="evenodd">
                         <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path>
@@ -172,6 +120,9 @@ function Login(props: any) {
                   </button>
                 </div>
               </div>
+              <div className="form-outline login-select">
+              <label className="form-label login-option" htmlFor="form2Example1">or</label>
+                </div>
                {/* <div className="form-outline">
                <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" ></button>
 
