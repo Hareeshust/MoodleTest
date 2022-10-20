@@ -66,8 +66,8 @@ export default function QuestionContextContainer() {
 
   const handleSubmit = async(selectedValue) => {
     await calculateScore(selectedValue);
+    percentage >= 60 ? setPassed(true) : setPassed(false);
     setShowModal(true);
-    testScore >= 60 ? setPassed(true) : setPassed(false);
   };
 
   const hideModalHandler = () => {
