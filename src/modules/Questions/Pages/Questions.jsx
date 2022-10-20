@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useLocation } from "react-router-dom";
 import * as actions from "../../Auth/_redux/authActions";
 import { useHistory } from "react-router-dom";
-import ResultModal from "../../Users/pages/ResultModal";
 import SingleQuestion from "./SIngleQuestion";
-import Certificate from "../../Users/pages/Certificate";
 
 const Questions = () => {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-  const [showModal, setShowModal] = useState(false);
-  const [passed, setPassed] = useState(true);
-  const[showCertificate,setShowCertificate] = useState(false);
-  const [testScore, setTestScore] = useState(50);
 
   useEffect(() => {
     console.log(location?.pathname);
@@ -39,22 +33,6 @@ const Questions = () => {
   const logOut = () => {
     dispatch(actions.logout());
   };
-
-  const handleSubmit = () => {
-    setShowModal(true);
-    setPassed(true);
-    setTestScore(88);
-  };
-
-  const hideModalHandler = () => {
-    setShowModal(false);
-    setShowCertificate(true);
-    
-  };
-  const hideCertificateModal = ()=>{
-    setShowCertificate(false);
-    setTestScore(0);
-  }
 
   return (
     <div class="wrapper-question bg-image">
@@ -85,26 +63,10 @@ const Questions = () => {
       </div>
       <div class="container">
         <div class="row">
-            <div class="timer">28:00</div>
-          <SingleQuestion handleSubmit={handleSubmit}/>
+          <div class="timer">28:00</div>
+          <SingleQuestion />
         </div>
       </div>
-      {showModal && (
-        <ResultModal
-          isPassed={passed}
-          score={testScore}
-          closeModal={hideModalHandler}
-        />
-      )}
-    {showCertificate && (
-        <Certificate
-        name={"User Name"}
-        score={testScore}
-        completionTime={27}
-        closeModal={hideCertificateModal}
-      />
-      )}
-
     </div>
   );
 };

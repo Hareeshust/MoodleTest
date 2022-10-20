@@ -4,20 +4,15 @@
  * Note: It's recommended to compose related routes in internal router
  */
 
-import React, { useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
-  BrowserRouter as Router,
-  Redirect,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
-import { Login } from "../modules/Auth";
-import { Users } from "../modules/Users";
-import { Register, Dashboard, Questions } from "../modules/Users";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { RootState } from "../app/store";
+import { Login } from "../modules/Auth";
 import * as actions from "../modules/Auth/_redux/authActions";
+import QuestionContextContainer from "../modules/Questions/QuestionContext";
+import { Dashboard, Register, Users } from "../modules/Users";
 
 export function Routes() {
   const dispatch = useDispatch();
@@ -64,7 +59,7 @@ export function Routes() {
       <Route path="/home" component={Users} />
       <Route path="/register" component={Register} />
       <Route path="/dashboard" component ={Dashboard}/>
-      <Route path="/questions" component ={Questions}/>
+      <Route path="/questions" component ={QuestionContextContainer}/>
     </Switch>
 </div>
     </Router>
