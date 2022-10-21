@@ -392,10 +392,11 @@ html,
 
 .google-text {
   padding-bottom: 22px;
+  padding-top: 20px ;
 }
 .google-change {
   background-size: 100% 65px;
-  height: 65px;
+  height: 57px;
   width: 100%;
   border: none;
   font-size: 20px;
@@ -410,7 +411,7 @@ html,
   color: rgba(0, 0, 0, 0.54);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px,
     rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
-  padding: 0px;
+  padding-left: 127px;
   border-radius: 2px;
   border: 1px solid transparent;
   font-size: 14px;
@@ -430,11 +431,11 @@ html,
   font-weight: 500;
 }
 .wrapper-login .login-select {
-  text-align: end;
+  text-align: center;
   padding: unset !important;
 }
 .wrapper-login .login-option {
-  padding-right: 76px !important;
+  /* padding-right: 76px !important; */
 }
 .wrapper-login {
   background-image: url("assets/Bg.png");
@@ -543,6 +544,18 @@ html,
   background: url("assets/Top-Banner.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 115px;
+}
+.wrapper-dashboard .nav-bar .workstream-title {
+  cursor: pointer;
+  height: 200px;
+  width: 100%;
+  /* padding-top: 25px; */
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-size: 100% 100% !important;
+  font-size: 55px;
+  padding-left: 25rem;
 }
 .wrapper-dashboard .volume {
   padding: 20px 0 0;
@@ -819,7 +832,7 @@ html,
 .modalTextContainerFailuer {
   position: absolute;
   text-align: center;
-  bottom: 8rem;
+  /* bottom: 8rem; */
 }
 .modalHeadderFont {
   color: #fff;
@@ -899,7 +912,7 @@ html,
     bottom: 3rem;
   }
   .modalTextContainerFailuer {
-    bottom: 11rem;
+    bottom: 16rem;
   }
   .resultAction{
     height:auto !important;
@@ -931,7 +944,7 @@ html,
   cursor: pointer;
   border: none;
   background-size: 100% 100%;
-  height: 55px;
+  height: 65px;
   box-shadow: none;
   float: right;
   margin: 10px 10px 0 0;

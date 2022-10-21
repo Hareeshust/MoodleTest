@@ -13,7 +13,7 @@ const ResultModal = (props: {
   const passed = props.isPassed;
   const scoreCard = passed ? scoreCardPass : scoreCardFail;
   const button = passed ? downloadCertificate : returnToHome;
-  const displayText = passed ? "YOU HAVE PASSED SCORING" : "Try again Later";
+  const displayText = passed ? "YOU HAVE PASSED SCORING" : "You have not cleared the test";
   const textContentClass = passed ? "modalTextContainerSuccess" : "modalTextContainerFailuer";
 
   return (
@@ -23,7 +23,7 @@ const ResultModal = (props: {
           <img src={scoreCard} alt="Score Card" className="img-fluid" />
           <div className={textContentClass}>
             <p className="modalHeadderFont">{displayText}</p>
-            <p className="modalScoreFont">{passScore}%</p>
+            <p className="modalScoreFont">{Number(passScore)}%</p>
             <img
               src={button}
               alt="Score Card"

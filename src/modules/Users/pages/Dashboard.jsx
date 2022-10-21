@@ -87,7 +87,12 @@ const Dashboard = () => {
   return (
     <div className="wrapper-dashboard bg-image">
       <div className="row nav-bar">
-        <div className="col-xs-1 col-xs-offset-9 volume">
+      <div className="col-xs-9">
+        <label className="workstream-title" htmlFor="workstream">
+          SELECT YOUR PLATFORM
+          </label>
+          </div>
+        <div className="col-xs-1  volume">
           <div className="form-check mute-icon">
             <input
               className="form-check-input"
