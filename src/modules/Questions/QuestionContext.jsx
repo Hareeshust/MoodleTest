@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 export const QuestionContext = createContext();
 
 export default function QuestionContextContainer() {
+  const userName = localStorage.getItem("name") || "test";
   const dispatch = useDispatch();
   const history=useHistory()
   const questionsArray = useSelector(
@@ -115,7 +116,8 @@ export default function QuestionContextContainer() {
 
       {showCertificate && (
         <Certificate
-          name={"User Name"}
+          isPassed={passed}
+          name={userName}
           score={percentage}
           completionTime={27}
           closeModal={hideCertificateModal}

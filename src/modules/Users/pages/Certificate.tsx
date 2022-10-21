@@ -6,14 +6,15 @@ import { format } from 'date-fns';
 
 const Certificate = (props: {
   name: string;
-  score: number;
+  score: any;
+  isPassed:boolean;
   completionTime: number;
   closeModal: MouseEventHandler;
 }) => {
-  const passScore = props.score;
-  const passed = true;
+  const passScore =  parseInt(props.score);
+  const passed = props.isPassed;
   const button = passed ? downloadCertificate : returnToHome;
-  const textContentClass = passed ? "modalTextContainerSuccess" : "modalTextContainerFailuer";
+  const textContentClass = passed ? "modalTextContainerSuccessCert" : "modalTextContainerFailuer";
   let context:any=null;
   let canvas:HTMLCanvasElement;
   const year = new Date().getFullYear();

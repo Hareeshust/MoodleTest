@@ -6,10 +6,10 @@ import returnToHome from "../../../assets/Return-home.png";
 
 const ResultModal = (props: {
   isPassed: boolean;
-  score: number;
+  score: any;
   closeModal: MouseEventHandler;
 }) => {
-  const passScore = props.score;
+  const passScore = parseInt(props.score);
   const passed = props.isPassed;
   const scoreCard = passed ? scoreCardPass : scoreCardFail;
   const button = passed ? downloadCertificate : returnToHome;
@@ -23,7 +23,7 @@ const ResultModal = (props: {
           <img src={scoreCard} alt="Score Card" className="img-fluid" />
           <div className={textContentClass}>
             <p className="modalHeadderFont">{displayText}</p>
-            <p className="modalScoreFont">{Number(passScore)}%</p>
+            <p className="modalScoreFont">{passScore}%</p>
             <img
               src={button}
               alt="Score Card"
