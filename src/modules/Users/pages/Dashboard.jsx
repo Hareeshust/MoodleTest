@@ -7,6 +7,8 @@ import nextButton from "../../../assets/Next-button.png";
 import { db } from "../../../firebaseconfig";
 import { doc, getDoc } from "firebase/firestore";
 import { setQuestion } from "../../Questions/_redux/questionsActions";
+import optionSelectionAudio from "../../../assets/audios/optionSelect.mp3";
+import buttonClickAudio from "../../../assets/audios/ButtonClick.mp3";
 
 const workstream = {
   title: "TSYS Workstream",
@@ -20,6 +22,10 @@ const workstream = {
   ],
 };
 const WorkStreamOption = ({ options, selected, onChange }) => {
+  const cardSelection = () => {
+    new Audio(optionSelectionAudio).play();
+  };
+
   return (
     <div className="">
       {options.map((choice, index) => (
@@ -34,7 +40,11 @@ const WorkStreamOption = ({ options, selected, onChange }) => {
             id={`radio${index + 1}`}
             onChange={onChange}
           />
-          <label className="radio-inline" htmlFor={`radio${index + 1}`}>
+          <label
+            className="radio-inline"
+            htmlFor={`radio${index + 1}`}
+            onClick={() => cardSelection()}
+          >
             {choice.text}
           </label>
         </div>
@@ -54,11 +64,11 @@ const Dashboard = () => {
     }),
     shallowEqual
   );
-  useEffect(()=>{
-    if(selectedStream){
-      dispatch(setQuestion(selectedStream))
+  useEffect(() => {
+    if (selectedStream) {
+      dispatch(setQuestion(selectedStream));
     }
-  },[selectedStream])
+  }, [selectedStream]);
   useEffect(() => {
     if (!isLoggedIn) {
       history.push("/login");
@@ -68,6 +78,7 @@ const Dashboard = () => {
   }, [history, isLoggedIn]);
 
   const handleClickNext = () => {
+    new Audio(buttonClickAudio).play();
     if (selectedStream && selectedStream !== (undefined || null)) {
       history.push({
         pathname: "/questions",
@@ -87,12 +98,13 @@ const Dashboard = () => {
   return (
     <div className="wrapper-dashboard bg-image">
       <div className="row nav-bar">
-      <div className="col-xs-9">
-        <label className="workstream-title" htmlFor="workstream">
-          SELECT YOUR PLATFORM
+        <div className="col-xs-12 col-md-3"></div>
+        <div className="col-xs-12 col-md-6">
+          <label className="workstream-title" htmlFor="workstream">
+            SELECT YOUR PLATFORM
           </label>
-          </div>
-        <div className="col-xs-1  volume">
+        </div>
+        <div className="col-xs-4 col-md-1 volume">
           <div className="form-check mute-icon">
             <input
               className="form-check-input"
@@ -105,10 +117,10 @@ const Dashboard = () => {
             <label className="form-check-label" htmlFor="check1"></label>
           </div>
         </div>
-        <div className="col-xs-1 profile">
+        <div className="col-xs-4 col-md-1 profile">
           <button></button>
         </div>
-        <div className="col-xs-1 exit">
+        <div className="col-xs-4 col-md-1 exit">
           <button onClick={logOut}></button>
         </div>
       </div>

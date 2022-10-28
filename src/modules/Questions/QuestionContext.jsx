@@ -1,16 +1,19 @@
 import React, { createContext, useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../Auth/_redux/authActions";
 import { Questions } from "../Users";
 import ResultModal from "../Users/pages/ResultModal";
 import Certificate from "../Users/pages/Certificate";
 import { useHistory } from "react-router";
+import buttonClickAudio from "../../assets/audios/ButtonClick.mp3";
+import successAudio from "../../assets/audios/Success.mp3";
+import failuerAudio from "../../assets/audios/WrongAnswer.mp3";
 export const QuestionContext = createContext();
 
 export default function QuestionContextContainer() {
   const userName = localStorage.getItem("name") || "test";
   const dispatch = useDispatch();
-  const history=useHistory()
+  const history = useHistory();
   const questionsArray = useSelector(
     (state) => state?.questions?.questionData?.questions
   );
@@ -22,7 +25,7 @@ export default function QuestionContextContainer() {
   const [passed, setPassed] = useState(true);
   const [showCertificate, setShowCertificate] = useState(false);
   const calculateScore = (selectedValue) => {
-    console.log(selectedValue)
+    console.log(selectedValue);
     if (currentQuestion.type === "singleChoice") {
       if (!selectedValue) return;
       const answerSelected = currentQuestion?.options?.find(
@@ -54,20 +57,27 @@ export default function QuestionContextContainer() {
             2
           );
           setPercentage(percentage);
-        
+
           return score;
         });
       }
     }
   };
   const handleClickNext = (selectedValue) => {
+    new Audio(buttonClickAudio).play();
     calculateScore(selectedValue);
     setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
-  const handleSubmit = async(selectedValue) => {
+  const handleSubmit = async (selectedValue) => {
     await calculateScore(selectedValue);
-    percentage >= 60 ? setPassed(true) : setPassed(false);
+    if (percentage >= 60) {
+      new Audio(successAudio).play();
+      setPassed(true);
+    } else {
+      new Audio(failuerAudio).play();
+      setPassed(false);
+    }
     setShowModal(true);
   };
 
@@ -84,7 +94,7 @@ export default function QuestionContextContainer() {
   const hideCertificateModal = () => {
     setShowCertificate(false);
     setTestScore(0);
-    history.push("/dashboard")
+    history.push("/dashboard");
   };
 
   const logOut = () => {
