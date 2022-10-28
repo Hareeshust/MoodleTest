@@ -59,8 +59,11 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
           localStorage.setItem("name", displayName || "");
           localStorage.setItem("email", email || "");
           localStorage.setItem("pic", photoURL || "");
-          if (result?.user) {
+          if (result?.user && result?.user?.email?.match(/.*@tsys.com$/)?.length === 1 ) {
             dispatch(actions.updateUser(result?.user));
+          }
+          else {
+            dispatch(actions.updateUserLogginFailure(false));
           }
         })
         .catch((error) => {

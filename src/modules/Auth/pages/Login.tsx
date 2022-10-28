@@ -178,7 +178,7 @@ function Login(props: any) {
                         </g>
                       </svg>
                     </div>
-                    <span className="signin-text">Log in with Google</span>
+                    <span className="signin-text">Log in with <span style={{color: "black"}}><b>T|SYS|</b></span> Mail</span>
                   </button>
                 </div>
               </div>

@@ -5,7 +5,8 @@ const initialState = {
   status: 'idle',
   users: null,
   user:null,
-  isLoggedIn: false
+  isLoggedIn: false,
+  logiFailure: false
 };
 
 
@@ -36,6 +37,11 @@ export const authSlice = createSlice({
     updateUser: (state, action)=>{
       state.user=action.payload.email;
       state.isLoggedIn = true;
+    },
+    updateUserLogginFailure: (state, action)=>{
+      state.isLoggedIn = action.payload;
+      state.logiFailure= true;
+
     },
     updateLogout: (state, action) =>{
       state.isLoggedIn = action.payload;
