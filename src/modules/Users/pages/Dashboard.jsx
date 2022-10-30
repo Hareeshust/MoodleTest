@@ -9,8 +9,9 @@ import { doc, getDoc } from "firebase/firestore";
 import { setQuestion } from "../../Questions/_redux/questionsActions";
 import optionSelectionAudio from "../../../assets/audios/optionSelect.mp3";
 import buttonClickAudio from "../../../assets/audios/ButtonClick.mp3";
+import loginSuccessAudio from "../../../assets/audios/Bg.mp3";
 import LoginError from "../../Components/LoginError";
-
+const successLoginAudio =  new Audio(loginSuccessAudio); 
 const workstream = {
   title: "TSYS Workstream",
   choices: [
@@ -24,6 +25,7 @@ const workstream = {
 };
 const WorkStreamOption = ({ options, selected, onChange }) => {
   const cardSelection = () => {
+    successLoginAudio.pause();
     new Audio(optionSelectionAudio).play();
   };
 
@@ -66,6 +68,10 @@ const Dashboard = () => {
     }),
     shallowEqual
   );
+
+  useEffect(() => {
+    successLoginAudio.play()
+  }, [])
   useEffect(() => {
     if (selectedStream) {
       dispatch(setQuestion(selectedStream));

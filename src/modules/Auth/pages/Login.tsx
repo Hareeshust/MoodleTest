@@ -88,6 +88,7 @@ function Login(props: any) {
   });
 
   const googleSignin = () => {
+    new Audio(buttonClickAudio).play();
     actions
       .googleSignIn(dispatch)()
       .then((resp: any) => {

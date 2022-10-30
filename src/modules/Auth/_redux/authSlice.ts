@@ -17,7 +17,6 @@ export const authSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     startCall: (state)=>{
-      state.isLoggedIn = false;
       state.loginFailure =false;
     },
     getUserList: (state, action) => {
