@@ -3,8 +3,12 @@ import { authSlice } from "./authSlice";
 import {user} from "../../../data/user";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import {auth, provider} from '../../../firebaseconfig'
+import {db} from '../../../firebaseconfig';
+import {collection, getDocs, setDoc, addDoc, updateDoc, doc, deleteDoc, getDoc} from 'firebase/firestore';
+import { format } from 'date-fns'
 
 const { actions } = authSlice;
+const userCollectionRef = collection(db,'users');
 
 export const initialiseCalls=()=> (dispatch:any)=>{
   dispatch(actions.startCall());
@@ -55,16 +59,17 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
   };
   export const googleSignIn = (dispatch: any) => async () => {
     try {
-      dispatch(actions.startCall());
+      dispatch(actions.startCall1());
       signInWithPopup(auth, provider)
         .then((result) => {
           console.log(result);
-          const { displayName, email, photoURL } = result?.user;
-          localStorage.setItem("name", displayName || "");
-          localStorage.setItem("email", email || "");
-          localStorage.setItem("pic", photoURL || "");
           if (result?.user && result?.user?.email?.match(/.*@tsys.com$/)?.length === 1 ) {
-            dispatch(actions.updateUser(result?.user));
+            const { displayName, email, photoURL } = result?.user;
+            localStorage.setItem("name", displayName || "");
+            localStorage.setItem("email", email || "");
+            localStorage.setItem("pic", photoURL || "");
+            updateToken(result?.user, dispatch);
+            // dispatch(actions.updateUser(result?.user));
           }
           else {
             dispatch(actions.updateUserLogginFailure(true));
@@ -78,6 +83,23 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
     }
   };
 
+  const updateToken = async (user: any, dispatch: any) => {
+    dispatch(actions.startCall());
+    const docRef = doc(db, "users",user?.email);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      dispatch(actions.updateUserToken( docSnap?.data()))
+    } else {
+      await setDoc(doc(userCollectionRef,user?.email), {
+        token: user?.email, starttime: format(new Date(user?.metadata?.lastSignInTime), 'MM/dd/yyyy') ,
+        testCleared: false,retakeDate:'',testStarted: false,testFinished: false
+       });
+    }
+    //const userAdded = await addDoc(userCollectionRef, {token: user?.email, starttime: user?.metadata?.lastSignInTime})
+     dispatch(actions.updateUser(user));
+  };
+  
 export const logout = () =>async (dispatch:any) => {    
      await signOut(auth);
     dispatch(actions.updateLogout(false));

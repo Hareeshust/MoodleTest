@@ -26,10 +26,11 @@ function Users() {
   useEffect(() => {
    dispatch(actions.getAllUsers());
   }, []);
-  const { users, isLoggedIn } = useSelector(
+  const { users, isLoggedIn, testCleared } = useSelector(
     (state: RootState) => ({
       users: state.user.users,
-      isLoggedIn: state.auth.isLoggedIn
+      isLoggedIn: state.auth.isLoggedIn,
+      testCleared: state.auth.testCleared
     }),
     shallowEqual
   );
@@ -37,17 +38,17 @@ function Users() {
     if(!isLoggedIn){
       history.push("/login");
     }
-    else {
+    else if(isLoggedIn && !testCleared) {
       history.push("/Dashboard");
     }
   }, [isLoggedIn])
   const [user, setUser] = useState<any>({});
-  onAuthStateChanged(auth, (currentUser:any)=>{
-    setUser(currentUser);
-  })
+  // onAuthStateChanged(auth, (currentUser:any)=>{
+  //   setUser(currentUser);
+  // })
   return (
     <>
-      <div className="search-header">
+      {/* <div className="search-header">
         <Container>
           <Row className="justify-content-md-center">
             <Col md={8}>
@@ -70,7 +71,7 @@ function Users() {
            );
           })}
         </Container>
-      </Container>
+      </Container> */}
     </>
   );
 }
