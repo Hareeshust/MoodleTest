@@ -6,6 +6,9 @@ import {auth, provider} from '../../../firebaseconfig'
 
 const { actions } = authSlice;
 
+export const initialiseCalls=()=> (dispatch:any)=>{
+  dispatch(actions.startCall());
+}
 export const getAllUsers = () => (dispatch: any) => {
   // return requestFromServer
   //   .fetchAllUsers()
@@ -52,6 +55,7 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
   };
   export const googleSignIn = (dispatch: any) => async () => {
     try {
+      dispatch(actions.startCall());
       signInWithPopup(auth, provider)
         .then((result) => {
           console.log(result);
@@ -63,7 +67,7 @@ export const login = (username: any, password: any, dispatch:any) => async() => 
             dispatch(actions.updateUser(result?.user));
           }
           else {
-            dispatch(actions.updateUserLogginFailure(false));
+            dispatch(actions.updateUserLogginFailure(true));
           }
         })
         .catch((error) => {

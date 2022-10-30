@@ -13,16 +13,20 @@ code {
 } */
 
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+@font-face {
+  font-family: myFirstFont;
+  src: url("assets/fonts/Bebas-Regular.ttf") format('truetype');
+}
 
 * {
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
+  /* background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%); */
   min-height: 100vh;
   display: flex;
   font-weight: 400;
-  font-family: "Fira Sans", sans-serif;
+  font-family: myFirstFont;
 }
 
 h1,
@@ -34,7 +38,7 @@ h6,
 label,
 span {
   font-weight: 500;
-  font-family: "Fira Sans", sans-serif;
+  font-family:myFirstFont;
 }
 
 body,
@@ -122,12 +126,27 @@ html,
   border: 2px solid #fff;
 }
 
-.btn.btn-primary {
+/* .btn.btn-primary {
   color: #fff !important;
   background-color: #00c2ba !important;
   border-color: #00c2ba !important;
+} */
+
+.btn.btn-primary {
+  width: 128px;
+  height: 35px;
+}
+.btn.btn-secondary {
+  width: 80px;
+  height: 35px;
+}
+.modal-footer .btn+.btn {
+  margin-bottom: 3px;
 }
 
+.modal-body {
+  font-size: medium;
+}
 .create-btn {
   width: 150px;
 }
@@ -360,8 +379,8 @@ html,
   color: #757575;
   font-size: 14px;
   font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, */
+    /* Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
 
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
   background-color: white;
@@ -430,6 +449,13 @@ html,
   padding: 10px 10px 10px 0px;
   font-weight: 500;
 }
+.entire-bg {
+  background-image: url("assets/bg1.png");
+  min-height: 100vh;
+}
+.error-modal{
+  /* background-image: url("assets/Bg.png"); */
+}
 .wrapper-login .login-select {
   text-align: center;
   padding: unset !important;
@@ -438,14 +464,14 @@ html,
   /* padding-right: 76px !important; */
 }
 .wrapper-login {
-  background-image: url("assets/Bg.png");
-  min-height: 100vh;
+  background-image: url("assets/bg1.png"); 
+   min-height: 100vh;
 }
 .wrapper-login .form-outline {
   padding: 20px 0;
 }
 .wrapper-login .form-outline label {
-  font-family: cursive;
+  /* font-family: cursive; */
   font-size: 30px;
   font-weight: bold;
   color: white;
@@ -563,6 +589,15 @@ html,
 }
 .wrapper-dashboard .volume {
   padding: 20px 0 0;
+}
+.dashboard-modal {
+  position: absolute;
+    /* overflow: visible; */
+    /* float: right; */
+    /* left: 0%; */
+    width: -webkit-fill-available;
+    z-index: 100;
+    top: 59px;
 }
 .wrapper-dashboard .volume input ~ label {
   background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
@@ -843,7 +878,12 @@ html,
 .modalHeadderFont {
   color: #fff;
   font-weight: bolder;
-  font-size: 4rem;
+  font-size: 3.5rem;
+}
+.retakeText {
+  color: #fff;
+  font-weight: bolder;
+  font-size: 2rem;
 }
 .modalScoreFont {
   color: #fff;
@@ -921,7 +961,7 @@ html,
 
 @media only screen and (min-width: 600px) {
   .modalHeadderFont {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   .modalScoreFont {
     font-size: 5rem;

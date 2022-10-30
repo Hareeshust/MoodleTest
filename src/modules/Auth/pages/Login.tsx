@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as actions from "../_redux/authActions";
+import LoginError from "../../Components/LoginError";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -10,8 +11,14 @@ import { RootState } from "../../../app/store";
 import buttonClickAudio from "../../../assets/audios/ButtonClick.mp3";
 // @ts-ignore: Unreachable code error
 import cardClick from "../../../assets/audios/cardClick.mp3";
+import {
+  Button,
+  Modal
+} from "react-bootstrap";
 
-import { Alert } from "react-bootstrap";
+
+
+
 const initialValues = {
   username: "",
   password: "",
@@ -31,19 +38,33 @@ const LoginSchema = Yup.object().shape({
 function Login(props: any) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [loginFailure, setLoginFailure] = useState(false);
-  const { user, isLoggedIn } = useSelector(
+ // const [loginFailure, setLoginFailure] = useState(false);
+  const [show, setShow] = useState(false);
+  const { user, isLoggedIn, loginFailure } = useSelector(
     (state: RootState) => ({
       user: state.auth.user,
       isLoggedIn: state.auth.isLoggedIn,
+      loginFailure: state.auth.loginFailure
     }),
     shallowEqual
   );
+  console.log('loginFailure', loginFailure, isLoggedIn);
+  useEffect(() => {
+   dispatch(actions.initialiseCalls())
+  }, [])
   useEffect(() => {
     if (isLoggedIn) {
       history.push("/home");
     }
   }, [isLoggedIn]);
+  useEffect(()=>{
+    if(loginFailure){
+      setShow(true);
+    }
+    else{
+      setShow(false)
+    }
+  },[loginFailure])
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,
@@ -56,7 +77,7 @@ function Login(props: any) {
             if (resp.data === "success") {
               history.push("/home");
             } else {
-              setLoginFailure(true);
+              //setLoginFailure(true);
             }
           })
           .catch(() => {
@@ -73,7 +94,8 @@ function Login(props: any) {
         if (resp.data === "success") {
           history.push("/dashboard");
         } else {
-          setLoginFailure(true);
+          //setLoginFailure(true);
+          setShow(true);
         }
       })
       .catch(() => {});
@@ -87,8 +109,11 @@ function Login(props: any) {
     new Audio(cardClick).play();
   };
 
+  const  handleClose = () => setShow(false); 
 
   return (
+    <div> 
+      <LoginError message="Please Use TSYS Mail to Login" page="login" show={show} handleClose= {handleClose} confirm={()=>{}} cancel={()=>{}}/>   
     <div className="wrapper-login bg-image">
       <div className="container">
         <div className="row">
@@ -178,7 +203,7 @@ function Login(props: any) {
                         </g>
                       </svg>
                     </div>
-                    <span className="signin-text">Log in with <span style={{color: "black"}}><b>T|SYS|</b></span> Mail</span>
+                    <span className="signin-text">Log in with <span style={{color: "black"}}><b>TSYS</b></span> Mail Id</span>
                   </button>
                 </div>
               </div>
@@ -194,7 +219,7 @@ function Login(props: any) {
                <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" ></button>
 
                </div> */}
-              <div className="form-outline mb-4">
+              <div className="form-outline mb-4" style={{paddingTop:"5px"}}>
                 <label className="form-label" htmlFor="form2Example1">
                   EMAIL
                 </label>
@@ -231,6 +256,7 @@ function Login(props: any) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

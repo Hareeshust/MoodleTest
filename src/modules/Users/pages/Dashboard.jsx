@@ -9,6 +9,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { setQuestion } from "../../Questions/_redux/questionsActions";
 import optionSelectionAudio from "../../../assets/audios/optionSelect.mp3";
 import buttonClickAudio from "../../../assets/audios/ButtonClick.mp3";
+import LoginError from "../../Components/LoginError";
 
 const workstream = {
   title: "TSYS Workstream",
@@ -56,6 +57,7 @@ const Dashboard = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [selectedStream, setSelectedStream] = useState();
+  const [show, setShow] = useState(false);
 
   const { users, isLoggedIn } = useSelector(
     (state) => ({
@@ -95,7 +97,11 @@ const Dashboard = () => {
     setSelectedStream(e.target.value);
   };
 
+  const showPrompt = () => setShow(true);
+  const  handleClose = () => setShow(false); 
   return (
+    <>
+   
     <div className="wrapper-dashboard bg-image">
       <div className="row nav-bar">
         <div className="col-xs-12 col-md-3"></div>
@@ -114,16 +120,17 @@ const Dashboard = () => {
               value="something"
               checked
             />
-            <label className="form-check-label" htmlFor="check1"></label>
+            {/* <label className="form-check-label" htmlFor="check1"></label> */}
           </div>
         </div>
         <div className="col-xs-4 col-md-1 profile">
-          <button></button>
+          {/* <button></button> */}
         </div>
         <div className="col-xs-4 col-md-1 exit">
-          <button onClick={logOut}></button>
+          <button onClick={showPrompt}></button>
         </div>
       </div>
+      <LoginError message="Are you sure want to logout?" show={show} cancel={handleClose} confirm={logOut}/>   
       <div className="container">
         <div className="row">
           <div className="col-xs-12 mt">
@@ -148,6 +155,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -13,7 +13,7 @@ import { Login } from "../modules/Auth";
 import * as actions from "../modules/Auth/_redux/authActions";
 import QuestionContextContainer from "../modules/Questions/QuestionContext";
 import { Dashboard, Register, Users } from "../modules/Users";
-
+import LoginError from "../modules/Components/LoginError"
 export function Routes() {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector(
@@ -52,7 +52,7 @@ export function Routes() {
   </div>
 </nav>
 
-<div className="">
+<div className="entire-bg">
     <Switch>
       <Route exact path='/' component={Login} />
       <Route exact path='/login' component={Login} />
@@ -60,6 +60,7 @@ export function Routes() {
       <Route path="/register" component={Register} />
       <Route path="/dashboard" component ={Dashboard}/>
       <Route path="/questions" component ={QuestionContextContainer}/>
+      <Route path="/loginerror" component={LoginError}/>
     </Switch>
 </div>
     </Router>
