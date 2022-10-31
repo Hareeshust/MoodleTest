@@ -4,22 +4,24 @@ import { useLocation } from "react-router-dom";
 import * as actions from "../../Auth/_redux/authActions";
 import { useHistory } from "react-router-dom";
 import SingleQuestion from "./SIngleQuestion";
+import { QuestionContext } from "../QuestionContext";
 
 const Questions = () => {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
+  const { totalQuestions,remainingTimeDisplay } = useContext(QuestionContext);
 
   useEffect(() => {
     console.log(location?.pathname);
     console.log(location?.search);
     console.log(location?.state?.workstream);
-  }, [location]);
+  }, [location, totalQuestions]);
 
   const { users, isLoggedIn } = useSelector(
     (state) => ({
       users: state.user.users,
-      isLoggedIn: state.auth.isLoggedIn,
+      isLoggedIn: true,
     }),
     shallowEqual
   );
@@ -34,14 +36,16 @@ const Questions = () => {
     dispatch(actions.logout());
   };
 
+
+
   return (
     <div class="wrapper-question bg-image">
       <div class="row nav-bar">
         <div class="col-xs-1 col-xs-offset-4">
-          <div class="totalt">40MINS</div>
+          <div class="totalt">{(totalQuestions*1)} MIN</div>
         </div>
         <div class="col-xs-1">
-          <div class="totalq">40</div>
+          <div class="totalq">{totalQuestions}</div>
         </div>
         <div class="col-xs-4"></div>
         <div class="col-xs-1 volume">
@@ -63,7 +67,7 @@ const Questions = () => {
       </div>
       <div class="container">
         <div class="row">
-          <div class="timer">28:00</div>
+          <div class="timer">{remainingTimeDisplay}</div>
           <SingleQuestion />
         </div>
       </div>

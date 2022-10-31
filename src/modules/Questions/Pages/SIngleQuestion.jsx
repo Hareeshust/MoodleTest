@@ -20,6 +20,7 @@ const SingleQuestion = () => {
     setCurrentQuestion,
     currentIndex,
     setCurrentIndex,
+    setTotalQuestions,
   } = useContext(QuestionContext);
 
   const handleClickNext = () => {
@@ -64,6 +65,8 @@ const SingleQuestion = () => {
     }
   };
   useEffect(() => {
+    setTotalQuestions(questionsArray?.length);
+    // setTotalQuestions(1);
     if (questionsArray?.length) {
       setCurrentQuestion(questionsArray[currentIndex]);
     } else {

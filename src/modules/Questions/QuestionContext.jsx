@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../Auth/_redux/authActions";
 import { Questions } from "../Users";
@@ -24,6 +24,10 @@ export default function QuestionContextContainer() {
   const [showModal, setShowModal] = useState(false);
   const [passed, setPassed] = useState(true);
   const [showCertificate, setShowCertificate] = useState(false);
+  
+  const [totalQuestions, setTotalQuestions] = useState();
+  const [remainingTimeDisplay, setRemainingTimeDisplay] = useState("00:00");
+
   const calculateScore = (selectedValue) => {
     console.log(selectedValue);
     if (currentQuestion.type === "singleChoice") {
@@ -100,6 +104,32 @@ export default function QuestionContextContainer() {
   const logOut = () => {
     dispatch(actions.logout());
   };
+
+
+  
+  const countDownStart = (remainingTime) => {
+    if(remainingTime >= 0){
+    if (remainingTime === 0) {
+      handleSubmit();
+    }
+    let minutes = parseInt(remainingTime / 60) % 60;
+    let seconds = remainingTime % 60;
+    let result =
+      (minutes < 10 ? "0" + minutes : minutes) +
+      ":" +
+      (seconds < 10 ? "0" + seconds : seconds);
+    setRemainingTimeDisplay(result);
+    setTimeout(()=>{
+      countDownStart(--remainingTime);
+    }, 1000);
+  }
+  };
+
+  useEffect(()=>{
+    countDownStart((totalQuestions*60));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[totalQuestions]);
+  
   const value = {
     testScore,
     setTestScore,
@@ -112,7 +142,11 @@ export default function QuestionContextContainer() {
     calculateScore,
     handleClickNext,
     handleSubmit,
+    totalQuestions,
+    setTotalQuestions,
+    remainingTimeDisplay
   };
+  
   return (
     <QuestionContext.Provider value={value}>
       <Questions />
