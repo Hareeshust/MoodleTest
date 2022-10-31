@@ -3,11 +3,14 @@ import { questionsBundle } from "../../../data/questions";
 import Checkbox from "../../Components/InputTypes/Checkbox";
 import RadioButton from "../../Components/InputTypes/RadioButton";
 import nextButton from "../../../assets/Next-button.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useHistory } from "react-router";
 import { QuestionContext } from "../QuestionContext";
+import * as actions from "../../Users/_redux/usersActions";
+import { RootState } from "../../../app/store";
 
 const SingleQuestion = () => {
+  const dispatch = useDispatch();
   const [timer, setTimer] = useState(30);
   const questionsArray = useSelector(
     (state) => state?.questions?.questionData?.questions
@@ -22,6 +25,20 @@ const SingleQuestion = () => {
     setCurrentIndex,
     setTotalQuestions,
   } = useContext(QuestionContext);
+
+  const { userToken, userLogonTime, testCleared } = useSelector(
+    (state) => ({
+      userToken: state.auth.userToken,
+      userLogonTime: state.auth.userLogonTime,
+      testCleared: state.auth.testCleared
+    }),
+    shallowEqual
+  );
+  useEffect(() => {
+    if(userToken){
+      dispatch(actions.updateTestStarted(userToken, true))
+    }
+  }, [])
 
   const handleClickNext = () => {
     setCurrentIndex((prevIndex) => prevIndex + 1);

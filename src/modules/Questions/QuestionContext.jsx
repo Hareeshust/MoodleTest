@@ -27,7 +27,6 @@ export default function QuestionContextContainer() {
   
   const [totalQuestions, setTotalQuestions] = useState();
   const [remainingTimeDisplay, setRemainingTimeDisplay] = useState("00:00");
-
   const calculateScore = (selectedValue) => {
     console.log(selectedValue);
     if (currentQuestion.type === "singleChoice") {
@@ -98,11 +97,14 @@ export default function QuestionContextContainer() {
   const hideCertificateModal = () => {
     setShowCertificate(false);
     setTestScore(0);
-    history.push("/dashboard");
+    //history.push("/dashboard");
+    dispatch(actions.logout())
+    history.push("/login");
   };
 
   const logOut = () => {
-    dispatch(actions.logout());
+    dispatch(actions.logout())
+    history.push("/login");
   };
 
 

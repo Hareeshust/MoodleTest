@@ -44,7 +44,7 @@ const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
     if(userToken && !passed){
       dispatch(actions.updateTestStatus(userToken, retestDate, passed))
     }
-    else if(userToken && !passed) {
+    else if(userToken && passed) {
       dispatch(actions.updateTestStatus(userToken,  format(new Date(), 'MM/dd/yyyy') , passed))
     }
   }, [passed, userToken, retestDate])

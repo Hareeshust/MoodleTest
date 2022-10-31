@@ -45,6 +45,12 @@ export const getAllUsers =  () => async (dispatch: any) => {
     const newFields = {retakeDate:retestDate, testCleared: isCleared}
     await updateDoc(userDoc, newFields);
   };
+  export const updateTestStarted = (token, testStarted) => async (dispatch: any) => {
+    const userDoc = doc(db,"users", token)
+    const newFields = {testStarted: testStarted}
+    await updateDoc(userDoc, newFields);
+  };
+  
   
   const getUserStructure = (user: any)=>{
     let data =  {

@@ -38,7 +38,6 @@ const LoginSchema = Yup.object().shape({
 function Login(props: any) {
   const dispatch = useDispatch();
   const history = useHistory();
- // const [loginFailure, setLoginFailure] = useState(false);
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("")
   const { user, isLoggedIn, loginFailure, testCleared } = useSelector(
@@ -61,19 +60,15 @@ function Login(props: any) {
       history.push("/home");
     }
     else if(isLoggedIn && testCleared) {
-      setMessage("You Have Already cleared the test")
+      setMessage("You Have Already Cleared The Quiz")
       setShow(true)
     }
   }, [isLoggedIn]);
   useEffect(()=>{
     if(loginFailure){
-      setMessage("Please Use TSYS Mail to Login");
+      setMessage("Please Use TSYS Mail To Login");
       setShow(true);
     }
-    // else if(testCleared){
-    //   setMessage("You Have Already cleared the test")
-    //   setShow(true)
-    // }
     else {
       setShow(false)
     }
