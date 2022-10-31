@@ -22,18 +22,6 @@ export const deleteUser = (id: any) => async () =>{
 
 export const createUser = (user: any) => async () => {
   await addDoc(userCollectionRef, {name: user.firstname, designation: user.designation})
-
-  //   user = getUserStructure(user);
-  //   let response =  localStorage.getItem('userList');
-  //   let users = [];
-  // if(response){
-  //   users = JSON.parse(response);
-  //   users.push({user: user})
-  // }
-  // localStorage.setItem('userList', JSON.stringify(users));
-  //   return new Promise((resolve: any) =>
-  //   setTimeout(() => resolve({ data: "success" }), 500)
-  // );
 };
 
 export const getAllUsers =  () => async (dispatch: any) => {
@@ -50,6 +38,12 @@ export const getAllUsers =  () => async (dispatch: any) => {
                });
         }        
         dispatch(actions.getUserList(filteredUser));
+  };
+
+  export const updateTestStatus = (token, retestDate:any, isCleared:any) => async (dispatch: any) => {
+    const userDoc = doc(db,"users", token)
+    const newFields = {retakeDate:retestDate, testCleared: isCleared}
+    await updateDoc(userDoc, newFields);
   };
   
   const getUserStructure = (user: any)=>{

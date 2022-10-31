@@ -6,7 +6,13 @@ const initialState = {
   users: null,
   user:null,
   isLoggedIn: false,
-  loginFailure: false
+  loginFailure: false,
+  userToken:null,
+  userLogonTime: null,
+  testCleared: false,
+  retakeDate:'',
+  testStarted:false,
+  testFinished: false
 };
 
 
@@ -18,6 +24,13 @@ export const authSlice = createSlice({
   reducers: {
     startCall: (state)=>{
       state.loginFailure =false;
+      //state.userToken = null;
+      //state.testCleared=false;
+    },
+    startCall1: (state)=>{
+      state.loginFailure =false;
+      state.isLoggedIn = false;
+      state.testCleared=false;
     },
     getUserList: (state, action) => {
       state.users = action.payload?.results;
@@ -26,6 +39,14 @@ export const authSlice = createSlice({
     updateUser: (state, action)=>{
       state.user=action.payload.email;
       state.isLoggedIn = true;
+    },
+    updateUserToken: (state, action)=>{
+      state.userToken=action.payload.token;
+      state.userLogonTime=action.payload.starttime;
+      state.testCleared=action.payload.testCleared;
+      state.retakeDate=action.payload.retakeDate;
+      state.testStarted=action.payload.testStarted;
+      state.testFinished=action.payload.testFinished;
     },
     updateUserLogginFailure: (state, action)=>{
       state.isLoggedIn = false;

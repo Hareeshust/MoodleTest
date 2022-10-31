@@ -1,21 +1,26 @@
-import React, { MouseEventHandler } from "react";
+import React, {useEffect, MouseEventHandler } from "react";
 import scoreCardPass from "../../../assets/Score-crad.png";
 import scoreCardFail from "../../../assets/Score-card-fail.png";
 import downloadCertificate from "../../../assets/Download-certificate.png";
 import returnToHome from "../../../assets/Return-home.png";
 import { format } from 'date-fns'
+import * as actions from "../_redux/usersActions";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { RootState } from "../../../app/store";
 
 const ResultModal = (props: {
   isPassed: boolean;
   score: any;
   closeModal: MouseEventHandler;
 }) => {
-  var days=7; // Days you want to subtract
+  const dispatch = useDispatch();
+var days=7;
 var date = new Date();
 var last = new Date(date.getTime() + (days * 24 * 60 * 60 * 1000));
 var day =last.getDate();
 var month=last.getMonth()+1;
 var year=last.getFullYear();
+const retestGmt = new Date(year, day, month);
 const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
 
   const passScore = parseInt(props.score);
@@ -26,6 +31,24 @@ const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
   const retakeMessage =  `PLEASE ATTEND THE TEST AFTER ONE WEEK ${retestDate}`;
   const textContentClass = passed ? "modalTextContainerSuccess" : "modalTextContainerFailuer";
 
+  const { userToken, userLogonTime, testCleared } = useSelector(
+    (state: RootState) => ({
+      userToken: state.auth.userToken,
+      userLogonTime: state.auth.userLogonTime,
+      testCleared: state.auth.testCleared
+    }),
+    shallowEqual
+  );
+
+  useEffect(() => {
+    if(userToken && !passed){
+      dispatch(actions.updateTestStatus(userToken, retestDate, passed))
+    }
+    else if(userToken && !passed) {
+      dispatch(actions.updateTestStatus(userToken,  format(new Date(), 'MM/dd/yyyy') , passed))
+    }
+  }, [passed, userToken, retestDate])
+ 
   return (
     <>
       <div className="backDrop">

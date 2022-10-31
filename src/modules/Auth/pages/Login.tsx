@@ -40,28 +40,41 @@ function Login(props: any) {
   const history = useHistory();
  // const [loginFailure, setLoginFailure] = useState(false);
   const [show, setShow] = useState(false);
-  const { user, isLoggedIn, loginFailure } = useSelector(
+  const [message, setMessage] = useState("")
+  const { user, isLoggedIn, loginFailure, testCleared } = useSelector(
     (state: RootState) => ({
       user: state.auth.user,
       isLoggedIn: state.auth.isLoggedIn,
-      loginFailure: state.auth.loginFailure
+      loginFailure: state.auth.loginFailure,
+      userToken: state.auth.userToken,
+      userLogonTime: state.auth.userLogonTime,
+      testCleared: state.auth.testCleared
     }),
     shallowEqual
   );
-  console.log('loginFailure', loginFailure, isLoggedIn);
+  console.log('testCleared', testCleared);
   useEffect(() => {
    dispatch(actions.initialiseCalls())
   }, [])
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn && !testCleared) {
       history.push("/home");
+    }
+    else if(isLoggedIn && testCleared) {
+      setMessage("You Have Already cleared the test")
+      setShow(true)
     }
   }, [isLoggedIn]);
   useEffect(()=>{
     if(loginFailure){
+      setMessage("Please Use TSYS Mail to Login");
       setShow(true);
     }
-    else{
+    // else if(testCleared){
+    //   setMessage("You Have Already cleared the test")
+    //   setShow(true)
+    // }
+    else {
       setShow(false)
     }
   },[loginFailure])
@@ -89,10 +102,11 @@ function Login(props: any) {
 
   const googleSignin = () => {
     new Audio(buttonClickAudio).play();
+    setShow(false);
     actions
       .googleSignIn(dispatch)()
       .then((resp: any) => {
-        if (resp.data === "success") {
+        if (resp.data === "success" && !testCleared && isLoggedIn) {
           history.push("/dashboard");
         } else {
           //setLoginFailure(true);
@@ -114,7 +128,7 @@ function Login(props: any) {
 
   return (
     <div> 
-      <LoginError message="Please Use TSYS Mail to Login" page="login" show={show} handleClose= {handleClose} confirm={()=>{}} cancel={()=>{}}/>   
+      <LoginError message={message} page="login" show={show} handleClose= {handleClose} confirm={()=>{}} cancel={()=>{}}/>   
     <div className="wrapper-login bg-image">
       <div className="container">
         <div className="row">
