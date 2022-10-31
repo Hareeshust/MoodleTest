@@ -1,8 +1,9 @@
-import React, { MouseEventHandler, useEffect } from "react";
+import React, { MouseEventHandler, useContext, useEffect } from "react";
 import downloadCertificate from "../../../assets/Download-certificate.png";
 import returnToHome from "../../../assets/Return-home.png";
 import certificatePng from "../../../assets/Certificate.png";
 import { format } from 'date-fns';
+import { QuestionContext } from "../../Questions/QuestionContext";
 
 const Certificate = (props: {
   name: string;
@@ -11,6 +12,7 @@ const Certificate = (props: {
   completionTime: number;
   closeModal: MouseEventHandler;
 }) => {
+  const { totalQuestions,remainingTimeDisplay } = useContext(QuestionContext);
   const passScore =  parseInt(props.score);
   const passed = props.isPassed;
   const button = passed ? downloadCertificate : returnToHome;
@@ -24,7 +26,22 @@ const Certificate = (props: {
      context = canvas.getContext("2d");
      addTextToImage(props.name,context)
   }, []);
+  const calculateTimeDifference = (totalCount:any,remainigTime:any)=>{
+    const startTime = new Date();
+    startTime.setHours(1);
+    startTime.setMinutes(totalCount);
+    startTime.setSeconds(1);
+    const endtime = new Date();
+    endtime.setHours(1);
+    endtime.setMinutes(remainigTime.split(":")[0]);
+    endtime.setSeconds(remainigTime.split(":")[1]);
+    const difference = startTime.valueOf()-endtime.valueOf();
+   return  Math.round(((difference % 86400000) % 3600000) / 60000);
+    
+  }
+  let completionTime = calculateTimeDifference(totalQuestions,remainingTimeDisplay);
   const addTextToImage=(text:string,context:any) =>{
+    
     const img = new Image();
     img.src = certificatePng;
     img.onload = function () {
@@ -40,10 +57,11 @@ const Certificate = (props: {
         context!.font = "30px Segoe UI";
         context!.fillText(passScore+"%", 669, 374);
         context!.font = "20px Segoe UI";
-        context!.fillText(date.toLocaleDateString('en-us'), 547, 473);
+        const month  = date.toLocaleString('default', { month: 'long' });
+        context!.fillText(month +" "+date.getDay()+" "+date.getFullYear(), 495, 473);
         
         context!.font = "18px Segoe UI";
-        context!.fillText(props.completionTime+" minutes", 600, 422);
+        context!.fillText(completionTime+" minutes", 600, 422);
         const downloadbtn = document.getElementById("certificate-download") as HTMLAnchorElement;
         downloadbtn!.href = canvas.toDataURL();
     };
