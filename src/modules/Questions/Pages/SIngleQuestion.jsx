@@ -30,15 +30,15 @@ const SingleQuestion = () => {
     (state) => ({
       userToken: state.auth.userToken,
       userLogonTime: state.auth.userLogonTime,
-      testCleared: state.auth.testCleared
+      testCleared: state.auth.testCleared,
     }),
     shallowEqual
   );
   useEffect(() => {
-    if(userToken){
-      dispatch(actions.updateTestStarted(userToken, true))
+    if (userToken) {
+      dispatch(actions.updateTestStarted(userToken, true));
     }
-  }, [])
+  }, []);
 
   const handleClickNext = () => {
     setCurrentIndex((prevIndex) => prevIndex + 1);
@@ -82,6 +82,7 @@ const SingleQuestion = () => {
     }
   };
   useEffect(() => {
+    console.log(JSON.stringify(questionsArray));
     setTotalQuestions(questionsArray?.length);
     // setTotalQuestions(1);
     if (questionsArray?.length) {
@@ -95,9 +96,16 @@ const SingleQuestion = () => {
     <React.Fragment>
       <div className="col-xs-12">
         <div className="question">
-          <p className="title">
-            QUESTION {currentIndex + 1}/{questionsArray?.length}
-          </p>
+          {currentQuestion?.type === "multipleChoice" ? (
+            <p className="title">
+              QUESTION {currentIndex + 1}/{questionsArray?.length} (Select all
+              applicable)
+            </p>
+          ) : (
+            <p className="title">
+              QUESTION {currentIndex + 1}/{questionsArray?.length}
+            </p>
+          )}
           <p className="question-content">{currentQuestion?.questionText}</p>
         </div>
       </div>
