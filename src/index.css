@@ -999,6 +999,37 @@ html,
   } 
 }*/
 
+
+.modalBodyError{
+  background-color: #7f007d;
+  border-radius: 5px;
+  border:5px solid #f7a125;
+  padding: 25px;
+}
+.errorButton{
+  min-width: 50px;
+  margin:5px;
+  background-color: #88c900 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 17px !important;
+  font-weight: bolder !important;
+}
+.errorButton :focus{
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.errorButton:hover{
+  transform: scale(0.9);
+}
+.errorModalButtonDiv{
+  width: -webkit-fill-available;
+  float: right;
+  text-align: right;
+  padding-top: 28px;
+}
 /* result-modal css ends here */
 
 .nextButton {

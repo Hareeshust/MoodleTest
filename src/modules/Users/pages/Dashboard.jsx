@@ -96,6 +96,7 @@ const Dashboard = () => {
   };
 
   const logOut = () => {
+    setShow(false);
     dispatch(actions.logout());
   };
 
