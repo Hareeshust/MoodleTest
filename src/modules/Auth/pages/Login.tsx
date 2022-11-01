@@ -40,29 +40,36 @@ function Login(props: any) {
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("")
-  const { user, isLoggedIn, loginFailure, testCleared } = useSelector(
+  const { user, isLoggedIn, loginFailure, testCleared, retakeDate, testStarted } = useSelector(
     (state: RootState) => ({
       user: state.auth.user,
       isLoggedIn: state.auth.isLoggedIn,
       loginFailure: state.auth.loginFailure,
       userToken: state.auth.userToken,
       userLogonTime: state.auth.userLogonTime,
-      testCleared: state.auth.testCleared
+      testCleared: state.auth.testCleared,
+      retakeDate: state.auth.retakeDate,
+      testStarted: state.auth.testStarted
     }),
     shallowEqual
   );
-  console.log('testCleared', testCleared);
+  console.log('testCleared', testCleared, testStarted);
   useEffect(() => {
    dispatch(actions.initialiseCalls())
   }, [])
   useEffect(() => {
-    if (isLoggedIn && !testCleared) {
-      history.push("/home");
+    if (isLoggedIn) {
+      if (!testCleared && !testStarted) {
+        history.push("/home");
+      } else if (testCleared) {
+        setMessage("You Have Already Cleared The Quiz");
+        setShow(true);
+      } else if (!testCleared && testStarted) {
+        setMessage(`You Can Retake The Quiz on ${retakeDate}`);
+        setShow(true);
+      }
     }
-    else if(isLoggedIn && testCleared) {
-      setMessage("You Have Already Cleared The Quiz")
-      setShow(true)
-    }
+    
   }, [isLoggedIn]);
   useEffect(()=>{
     if(loginFailure){
@@ -73,6 +80,7 @@ function Login(props: any) {
       setShow(false)
     }
   },[loginFailure])
+
   const formik = useFormik({
     initialValues,
     enableReinitialize: true,

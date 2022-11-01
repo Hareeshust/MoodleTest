@@ -665,28 +665,28 @@ html,
   background: url("assets/2-Tile-Active.png") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check #radio3 ~ label {
-  background: url("assets/3-Tile-Default.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/3-Tile-Default.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check input#radio3:checked + label {
-  background: url("assets/3-Tile-Active.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/3-Tile-Active.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check #radio4 ~ label {
-  background: url("assets/4-Tile-Default.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/4-Tile-Default.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check input#radio4:checked + label {
-  background: url("assets/4-Tile-Active.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/4-Tile-Active.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check #radio5 ~ label {
-  background: url("assets/5-Tile-Default.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/5-Tile-Default.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check input#radio5:checked + label {
-  background: url("assets/5-Tile-Active.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/5-Tile-Active.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check #radio6 ~ label {
-  background: url("assets/6-Tile-Default.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/6-Tile-Default.svg") no-repeat scroll 0 0 transparent;
 }
 .wrapper-dashboard .form-check input#radio6:checked + label {
-  background: url("assets/6-Tile-Active.png") no-repeat scroll 0 0 transparent;
+  background: url("assets/6-Tile-Active.svg") no-repeat scroll 0 0 transparent;
 }
 
 .wrapper-question {

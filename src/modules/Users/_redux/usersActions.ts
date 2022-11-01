@@ -3,7 +3,14 @@ import * as requestFromServer from "./usersCrud";
 import { userSlice } from "./usersSlice";
 import {db} from '../../../firebaseconfig';
 import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore';
-
+import { format } from 'date-fns'
+var days=7;
+var date = new Date();
+var last = new Date(date.getTime() + (days * 24 * 60 * 60 * 1000));
+var day =last.getDate();
+var month=last.getMonth()+1;
+var year=last.getFullYear();
+const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
 const { actions } = userSlice;
 const userCollectionRef = collection(db,'users');
 
@@ -47,7 +54,7 @@ export const getAllUsers =  () => async (dispatch: any) => {
   };
   export const updateTestStarted = (token, testStarted) => async (dispatch: any) => {
     const userDoc = doc(db,"users", token)
-    const newFields = {testStarted: testStarted}
+    const newFields = {testStarted: testStarted,starttime: format(new Date(), 'MM/dd/yyyy'), retakeDate: retestDate }
     await updateDoc(userDoc, newFields);
   };
   
