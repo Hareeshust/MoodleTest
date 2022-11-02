@@ -53,7 +53,7 @@ function Login(props: any) {
     }),
     shallowEqual
   );
-  console.log('testCleared', testCleared, testStarted);
+  console.log('testCleared', testCleared, isLoggedIn);
   useEffect(() => {
    dispatch(actions.initialiseCalls())
   }, [])

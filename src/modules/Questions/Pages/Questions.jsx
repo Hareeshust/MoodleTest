@@ -5,6 +5,7 @@ import * as actions from "../../Auth/_redux/authActions";
 import { useHistory } from "react-router-dom";
 import SingleQuestion from "./SIngleQuestion";
 import { QuestionContext } from "../QuestionContext";
+import { RootState } from "../../../app/store";
 
 const Questions = () => {
   const location = useLocation();
@@ -18,10 +19,9 @@ const Questions = () => {
     console.log(location?.state?.workstream);
   }, [location, totalQuestions]);
 
-  const { users, isLoggedIn } = useSelector(
+  const { isLoggedIn } = useSelector(
     (state) => ({
-      users: state.user.users,
-      isLoggedIn: true,
+      isLoggedIn: state.auth.isLoggedIn,
     }),
     shallowEqual
   );
@@ -30,7 +30,7 @@ const Questions = () => {
     if (!isLoggedIn) {
       history.push("/login");
     }
-  }, [isLoggedIn]);
+  }, [history,isLoggedIn]);
 
   const logOut = () => {
     dispatch(actions.logout());
