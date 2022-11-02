@@ -23,8 +23,8 @@ const LoginError = (props: {
                 <Button type="button" className="btn errorButton" onClick={props.handleClose}>OK</Button>
               ) : (
                 <>
-                 <Button type="button" className="btn errorButton" onClick={props.confirm}>Sure</Button>
                  <Button type="button" className="btn errorButton" onClick={props.cancel}>Cancel</Button>
+                 <Button type="button" className="btn errorButton" onClick={props.confirm}>Sure</Button>
                 </>
               )}
             </div>

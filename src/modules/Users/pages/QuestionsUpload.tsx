@@ -5,16 +5,18 @@ import * as actions from "../../Auth/_redux/authActions";
 import LoginError from "../../Components/LoginError";
 import { useHistory } from "react-router-dom";
 import { RootState } from "../../../app/store";
+import * as XLSX from "xlsx";
 
 const QuestionsUpload = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [show, setShow] = useState(false);
+  const [excelFile, setExcelFile] = useState(null);
+  const [excelData, setExcelData] = useState(null);
 
   const showPrompt = () => setShow(true);
   const handleClose = () => setShow(false);
-  var selectedFile;
 
 
   const { isLoggedIn } = useSelector(
@@ -35,12 +37,31 @@ const QuestionsUpload = () => {
     dispatch(actions.logout());
   };
 
-  const uploadDocument = () => {
-    alert("Need to implement...");
+  const handelFile = (e) => {
+    let selectedFile = e.target.files[0];
+    if (selectedFile) {
+      let reader = new FileReader();
+      reader.readAsArrayBuffer(selectedFile);
+      reader.onload = (e) => {
+        setExcelFile(e.target.result);
+      };
+    } else {
+      setExcelFile(null);
+    }
   };
-
-  const handelChange = () => {
-    console.log("on file select");
+  
+  const handelUpload = () => {
+    if (excelFile !== null) {
+      const workBook = XLSX.read(excelFile,{type:'buffer'});
+      const worksheetName = workBook.SheetNames[0];
+      const worksheet = workBook.Sheets[worksheetName];
+      const data = XLSX.utils.sheet_to_json(worksheet);
+      setExcelData(data);
+      console.log("data = "+JSON.stringify(data));
+      console.log("data = ",excelData);
+    } else {
+      setExcelData(null);
+    }
   };
 
   return (
@@ -84,12 +105,13 @@ const QuestionsUpload = () => {
             id="myFile"
             name="filename"
             className="chooseFileInput"
-            onChange={() => handelChange()}
+            accept=".xls,.xlsx"
+            onChange={handelFile}
           />
           <Button
             type="button"
             className="btn errorButton"
-            onClick={() => uploadDocument()}
+            onClick={() => handelUpload()}
           >
             Submit
           </Button>

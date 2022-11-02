@@ -41,15 +41,13 @@ const Questions = () => {
   return (
     <div class="wrapper-question bg-image">
       <div class="row nav-bar">
-        <div class="col-xs-1 col-xs-offset-4">
+      <div class="col-xs-2"></div>
+        <div class="col-xs-8 navQuestionCountDiv">
           <div class="totalt">{(totalQuestions*1)} MIN</div>
-        </div>
-        <div class="col-xs-1">
           <div class="totalq">{totalQuestions}</div>
         </div>
-        <div class="col-xs-4"></div>
         <div class="col-xs-1 volume">
-          <div class="form-check">
+          <div class="form-check" align="center">
             <input
               class="form-check-input"
               type="checkbox"

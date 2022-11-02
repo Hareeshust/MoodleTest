@@ -413,32 +413,19 @@ html,
   padding-bottom: 22px;
   padding-top: 20px;
 }
+
 .google-change {
-  background-size: 100% 65px;
-  height: 57px;
-  width: 100%;
+  background: url("assets/Log-in-with-email-id.png") no-repeat scroll 0 0
+    transparent;
   border: none;
-  font-size: 20px;
+  height: 71px;
+  width: 100%;
+  background-size: 100% 100%;
   box-shadow: none;
-  padding: 0 25px;
-  border-radius: 12px;
+  outline: none;
+  transition: 0.2s all ease-in-out;
 }
-.google-sigin {
-  background-color: rgb(255, 255, 255);
-  display: inline-flex;
-  align-items: center;
-  color: rgba(0, 0, 0, 0.54);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px,
-    rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
-  padding-left: 127px;
-  border-radius: 2px;
-  border: 1px solid transparent;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: Roboto, sans-serif;
-  float: right;
-  border-radius: 12px;
-}
+
 .signin-sub {
   margin-right: 10px;
   background: rgb(255, 255, 255);
@@ -512,6 +499,7 @@ html,
 .wrapper-login .row .passreset a {
   color: white !important;
   text-decoration: none;
+  font-size: 15px;
 }
 .wrapper-login .signin {
   background: url("assets/Sign-in-Button.png") no-repeat scroll 0 0 transparent;
@@ -568,7 +556,7 @@ html,
 
 .wrapper-dashboard {
   background-image: url("assets/Bg.png");
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .wrapper-dashboard .nav-bar {
@@ -632,7 +620,7 @@ html,
   font-weight: bold;
   text-align: center;
   background-size: 100% 100% !important;
-  font-size: 27px;
+  font-size: 32px;
 }
 .answer_main_div {
   display: flex !important;
@@ -730,13 +718,17 @@ html,
   width: 100%;
   border: none;
 }
+.navQuestionCountDiv {
+  display: flex;
+  justify-content: center;
+}
 .wrapper-question .totalq {
   background: url("assets/Total-question.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
   height: 60px;
   width: 85px;
-  margin: 20px 15px 0 35px;
-  padding: 14px 20px 20px 47px;
+  margin: 20px 10px 0 10px;
+  padding: 10px 20px 20px 48px;
   color: rgb(225, 225, 31);
   font-weight: bold;
   font-size: 20px;
@@ -746,8 +738,8 @@ html,
   background-size: 100% 100%;
   height: 60px;
   width: 133px;
-  margin: 20px 15px 0 0;
-  padding: 14px 20px 20px 45px;
+  margin: 20px 10px 0 10px;
+  padding: 10px 20px 20px 48px;
   color: rgb(225, 225, 31);
   font-weight: bold;
   font-size: 20px;
@@ -766,7 +758,7 @@ html,
   width: 100%;
   color: white;
   padding: 50px 150px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
 }
@@ -791,10 +783,10 @@ html,
   width: 100%;
   padding: 79px 15px 100px 15px;
   color: white;
-  font-weight: bold;
+  /* font-weight: bold; */
   text-align: center;
   background-size: 100% 100% !important;
-  font-size: 18px;
+  font-size: 28px;
   /* position: absolute;
   top: -47px; */
   left: 0;
@@ -1000,10 +992,15 @@ html,
 }*/
 
 .modalBodyError {
-  background-color: #7f007d;
-  border-radius: 5px;
-  border: 5px solid #f7a125;
-  padding: 25px;
+  background: url("assets/Log-in-Logout-modal.png") no-repeat scroll 0 0
+    transparent;
+  border: none;
+  /* height: 71px;
+  width: 100%; */
+  background-size: 100% 100%;
+  box-shadow: none;
+  outline: none;
+  padding: 39px 43px;
 }
 .errorButton {
   min-width: 50px;
@@ -1057,17 +1054,17 @@ html,
   justify-content: center;
   align-items: center;
 }
-.chooseFileInput{
+.chooseFileInput {
   border: 5px solid #f7a125;
-padding: 10px 5px;
-margin: 26px 10px;
-background-color: #6b1dce;
-width: 325px;
-font-size: 18px;
-color:white;
-font-weight: bold;
+  padding: 10px 5px;
+  margin: 26px 10px;
+  background-color: #6b1dce;
+  width: 325px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
 }
-.docUploadForm{
+.docUploadForm {
   text-align: center;
 }
 /* QuestionsUpload page css end */
