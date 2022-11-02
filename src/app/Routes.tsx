@@ -12,7 +12,7 @@ import { RootState } from "../app/store";
 import { Login } from "../modules/Auth";
 import * as actions from "../modules/Auth/_redux/authActions";
 import QuestionContextContainer from "../modules/Questions/QuestionContext";
-import { Dashboard, Register, Users } from "../modules/Users";
+import { Dashboard, Register, Users, QuestionsUpload } from "../modules/Users";
 import LoginError from "../modules/Components/LoginError"
 export function Routes() {
   const dispatch = useDispatch();
@@ -61,6 +61,7 @@ export function Routes() {
       <Route path="/dashboard" component ={Dashboard}/>
       <Route path="/questions" component ={QuestionContextContainer}/>
       <Route path="/loginerror" component={LoginError}/>
+      <Route path="/QuestionsUpload" component={QuestionsUpload}/>
     </Switch>
 </div>
     </Router>

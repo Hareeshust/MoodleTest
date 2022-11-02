@@ -123,8 +123,11 @@ function Login(props: any) {
     new Audio(buttonClickAudio).play();
   };
 
-  const cardSelection = () => {
+  const cardSelection = (type) => {
     new Audio(cardClick).play();
+    if(type === "ADMIN"){
+      history.push("/QuestionsUpload");
+    }
   };
 
   const  handleClose = () => setShow(false); 
@@ -165,7 +168,7 @@ function Login(props: any) {
                   <label
                     className="radio-inline employee-active"
                     htmlFor="radio1"
-                    onClick={() => cardSelection()}
+                    onClick={() => cardSelection('EMPLOYEE')}
                   >
                     EMPLOYEE
                   </label>
@@ -181,7 +184,7 @@ function Login(props: any) {
                   <label
                     className="radio-inline"
                     htmlFor="radio2"
-                    onClick={() => cardSelection()}
+                    onClick={() => cardSelection('ADMIN')}
                   >
                     ADMIN
                   </label>

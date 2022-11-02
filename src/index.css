@@ -15,7 +15,7 @@ code {
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 @font-face {
   font-family: myFirstFont;
-  src: url("assets/fonts/Bebas-Regular.ttf") format('truetype');
+  src: url("assets/fonts/Bebas-Regular.ttf") format("truetype");
 }
 
 * {
@@ -38,7 +38,7 @@ h6,
 label,
 span {
   font-weight: 500;
-  font-family:myFirstFont;
+  font-family: myFirstFont;
 }
 
 body,
@@ -140,7 +140,7 @@ html,
   width: 80px;
   height: 35px;
 }
-.modal-footer .btn+.btn {
+.modal-footer .btn + .btn {
   margin-bottom: 3px;
 }
 
@@ -380,7 +380,7 @@ html,
   font-size: 14px;
   font-weight: 500;
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, */
-    /* Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
+  /* Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
 
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
   background-color: white;
@@ -453,7 +453,7 @@ html,
   background-image: url("assets/bg1.png");
   min-height: 100vh;
 }
-.error-modal{
+.error-modal {
   /* background-image: url("assets/Bg.png"); */
 }
 .wrapper-login .login-select {
@@ -464,8 +464,8 @@ html,
   /* padding-right: 76px !important; */
 }
 .wrapper-login {
-  background-image: url("assets/bg1.png"); 
-   min-height: 100vh;
+  background-image: url("assets/bg1.png");
+  min-height: 100vh;
 }
 .wrapper-login .form-outline {
   padding: 20px 0;
@@ -592,12 +592,12 @@ html,
 }
 .dashboard-modal {
   position: absolute;
-    /* overflow: visible; */
-    /* float: right; */
-    /* left: 0%; */
-    width: -webkit-fill-available;
-    z-index: 100;
-    top: 59px;
+  /* overflow: visible; */
+  /* float: right; */
+  /* left: 0%; */
+  width: -webkit-fill-available;
+  z-index: 100;
+  top: 59px;
 }
 .wrapper-dashboard .volume input ~ label {
   background: url("assets/Music-on.png") no-repeat scroll 0 0 transparent;
@@ -894,7 +894,7 @@ html,
   cursor: pointer;
   transition: 0.2s all ease-in-out;
 }
-.resultAction:hover{
+.resultAction:hover {
   transform: scale(0.9);
 }
 @media only screen and (max-width: 299px) {
@@ -999,16 +999,15 @@ html,
   } 
 }*/
 
-
-.modalBodyError{
+.modalBodyError {
   background-color: #7f007d;
   border-radius: 5px;
-  border:5px solid #f7a125;
+  border: 5px solid #f7a125;
   padding: 25px;
 }
-.errorButton{
+.errorButton {
   min-width: 50px;
-  margin:5px;
+  margin: 5px;
   background-color: #88c900 !important;
   border: none !important;
   outline: none !important;
@@ -1016,15 +1015,15 @@ html,
   font-size: 17px !important;
   font-weight: bolder !important;
 }
-.errorButton :focus{
+.errorButton :focus {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
 }
-.errorButton:hover{
+.errorButton:hover {
   transform: scale(0.9);
 }
-.errorModalButtonDiv{
+.errorModalButtonDiv {
   width: -webkit-fill-available;
   float: right;
   text-align: right;
@@ -1049,3 +1048,26 @@ html,
 .topAlign {
   top: -47px;
 }
+
+/* QuestionsUpload page css start */
+.uploadFileMainDiv {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chooseFileInput{
+  border: 5px solid #f7a125;
+padding: 10px 5px;
+margin: 26px 10px;
+background-color: #6b1dce;
+width: 325px;
+font-size: 18px;
+color:white;
+font-weight: bold;
+}
+.docUploadForm{
+  text-align: center;
+}
+/* QuestionsUpload page css end */
