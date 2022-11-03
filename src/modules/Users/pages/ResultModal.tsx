@@ -29,7 +29,7 @@ const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
   const button = passed ? downloadCertificate : returnToHome;
   const displayText = passed ? "YOU HAVE PASSED SCORING" : "YOU HAVE NOT CLEARED THE TEST";
   const retakeMessage =  `PLEASE ATTEND THE TEST AFTER ONE WEEK ${retestDate}`;
-  const textContentClass = passed ? "modalTextContainerSuccess" : "modalTextContainerFailuer";
+  const textContentClass = passed ? "modalTextContainerSuccess" : "modalTextContainerFailuerModal";
 
   const { userToken, userLogonTime, testCleared } = useSelector(
     (state: RootState) => ({

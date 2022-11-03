@@ -149,6 +149,7 @@ function Login(props: any) {
         confirm={() => {}}
         cancel={() => {}}
       />
+      
       <div className="wrapper-login bg-image">
         <div className="container">
           <div className="row">
@@ -236,7 +237,6 @@ function Login(props: any) {
                </div> */}
                 <div
                   className="form-outline mb-4"
-                  style={{ paddingTop: "5px" }}
                 >
                   <label className="form-label" htmlFor="form2Example1">
                     EMAIL
