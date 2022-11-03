@@ -410,10 +410,17 @@ html,
 }
 
 .google-text {
-  padding-bottom: 22px;
+  /* padding-bottom: 22px; */
   padding-top: 20px;
+  text-align: center;
 }
-
+.loginMailImg {
+  width: 100%;
+  height: 62px !important;
+  /* width: auto; */
+  /* height: auto; */
+  cursor: pointer;
+}
 .google-change {
   background: url("assets/Log-in-with-email-id.png") no-repeat scroll 0 0
     transparent;
@@ -553,7 +560,9 @@ html,
   background: url("assets/Selector-Active.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
 }
-
+.form-check-overwrite {
+  padding-left: 0px !important;
+}
 .wrapper-dashboard {
   background-image: url("assets/Bg.png");
   min-height: 100vh;
