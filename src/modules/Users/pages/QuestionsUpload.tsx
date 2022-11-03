@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
 import * as actions from "../../Auth/_redux/authActions";
 import LoginError from "../../Components/LoginError";
+import { useHistory } from "react-router-dom";
+import { RootState } from "../../../app/store";
 import * as XLSX from "xlsx";
 
 const QuestionsUpload = () => {
@@ -19,6 +21,8 @@ const QuestionsUpload = () => {
   };
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [show, setShow] = useState(false);
   const [excelFile, setExcelFile] = useState(null);
   const [excelData, setExcelData] = useState(null);
@@ -26,6 +30,20 @@ const QuestionsUpload = () => {
 
   const showPrompt = () => setShow(true);
   const handleClose = () => setShow(false);
+
+
+  const { isLoggedIn } = useSelector(
+    (state: RootState) => ({
+      isLoggedIn: state.auth.isLoggedIn,
+    }),
+    shallowEqual
+  );
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history.push("/login");
+    }
+  }, [isLoggedIn]);
 
   const logOut = () => {
     setShow(false);
@@ -69,7 +87,7 @@ const QuestionsUpload = () => {
         <div className="col-xs-12 col-md-3"></div>
         <div className="col-xs-12 col-md-6">
           <label className="workstream-title" htmlFor="workstream">
-            UOLOAD QUESTIONS
+            UPLOAD QUESTIONS
           </label>
         </div>
         <div className="col-xs-4 col-md-1 volume">
