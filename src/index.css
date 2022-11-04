@@ -29,6 +29,10 @@ body {
   font-family: myFirstFont;
 }
 
+body::after{
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+  content:url("assets/1st-Tile-Active.png") url("assets/2-Tile-Default.png");
+}
 h1,
 h2,
 h3,
