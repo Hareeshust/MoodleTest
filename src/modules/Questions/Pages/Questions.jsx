@@ -46,6 +46,9 @@ const Questions = () => {
           <div class="totalt">{(totalQuestions*1)} MIN</div>
           <div class="totalq">{totalQuestions}</div>
         </div>
+        <div class="col-xs-1 exit">
+          {/* <button onClick={logOut}></button> */}
+        </div>
         <div class="col-xs-1 volume">
           <div class="form-check" align="center">
             <input
@@ -58,9 +61,6 @@ const Questions = () => {
             />
             <label class="form-check-label" for="check1"></label>
           </div>
-        </div>
-        <div class="col-xs-1 exit">
-          <button onClick={logOut}></button>
         </div>
       </div>
       <div class="container">

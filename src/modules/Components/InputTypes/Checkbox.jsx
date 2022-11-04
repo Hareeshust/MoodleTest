@@ -4,6 +4,7 @@ import NextButton from "./Button";
 import answerSelectedAudio from "../../../assets/audios/CorrectAnswer.mp3";
 
 const Checkbox = () => {
+  const optionLabel = ['A','B','C','D'];
   const [selectedValue, setSelectedValue] = useState([]);
   const { currentQuestion } = useContext(QuestionContext);
 
@@ -47,7 +48,7 @@ const Checkbox = () => {
                 selectAnswer();
               }}
             >
-              {option.answerText}
+              {optionLabel[optionIndex]}: {option.answerText}
             </label>
           </div>
         ))}

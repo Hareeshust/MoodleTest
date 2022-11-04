@@ -29,10 +29,15 @@ const QuestionsUpload = () => {
   const [excelFile, setExcelFile] = useState(null);
   const [excelData, setExcelData] = useState(null);
   const [workStreamSelected, setWorkStreamSelected] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [fromLogout, setFromLogout] = useState(false);
 
-  const showPrompt = () => setShow(true);
+  const showPrompt = () => {
+    setFromLogout(true);
+    setErrorMessage("Are you sure want to logout?");
+    setShow(true);
+  };
   const handleClose = () => setShow(false);
-
 
   const { isLoggedIn } = useSelector(
     (state: RootState) => ({
@@ -49,7 +54,9 @@ const QuestionsUpload = () => {
 
   const logOut = () => {
     setShow(false);
-    dispatch(actions.logout());
+    if (fromLogout) {
+      dispatch(actions.logout());
+    }
   };
 
   const handelFile = (e) => {
@@ -66,15 +73,27 @@ const QuestionsUpload = () => {
   };
 
   const handelUpload = () => {
-    if (excelFile !== null) {
-      const workBook = XLSX.read(excelFile, { type: "buffer" });
-      const worksheetName = workBook.SheetNames[0];
-      const worksheet = workBook.Sheets[worksheetName];
-      const data = XLSX.utils.sheet_to_json(worksheet);
-      setExcelData(data);
-      dispatch(userActions.uploadQuestions(workStreamSelected,data));
+
+    if (workStreamSelected != null && workStreamSelected !== "") {
+      if (excelFile !== null) {
+        const workBook = XLSX.read(excelFile, { type: "buffer" });
+        const worksheetName = workBook.SheetNames[0];
+        const worksheet = workBook.Sheets[worksheetName];
+        const data = XLSX.utils.sheet_to_json(worksheet);
+        setExcelData(data);
+        console.log("data = " + JSON.stringify(data));
+        console.log("data = ", excelData);
+        dispatch(userActions.uploadQuestions(workStreamSelected, data));
+      } else {
+        setExcelData(null);
+        setFromLogout(false);
+        setErrorMessage("Please select a excel file to upload");
+        setShow(true);
+      }
     } else {
-      setExcelData(null);
+      setFromLogout(false);
+      setErrorMessage("Please select the workstreem");
+      setShow(true);
     }
   };
 
@@ -109,12 +128,12 @@ const QuestionsUpload = () => {
         </div>
       </div>
       <LoginError
-        message="Are you sure want to logout?"
+        message={errorMessage}
         show={show}
         cancel={handleClose}
         confirm={logOut}
         page={""}
-        handleClose={undefined}
+        handleClose={handleClose}
       />
       <div className="uploadFileMainDiv">
         <form className="docUploadForm">

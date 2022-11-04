@@ -4,6 +4,7 @@ import NextButton from "./Button";
 import answerSelectedAudio from "../../../assets/audios/CorrectAnswer.mp3";
 
 const RadioButton = () => {
+  const optionLabel = ['A','B','C','D'];
   const [selectedValue, setSelectedValue] = useState(null);
   const { currentQuestion } = useContext(QuestionContext);
   function onChangeHandler(event) {
@@ -38,7 +39,7 @@ const RadioButton = () => {
                 selectAnswer();
               }}
             >
-              {option.answerText}
+              {optionLabel[optionIndex]}: {option.answerText}
             </label>
           </div>
         ))}
