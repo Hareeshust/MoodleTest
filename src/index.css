@@ -31,7 +31,8 @@ body {
 
 body::after{
   position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
-  content:url("assets/1st-Tile-Active.png") url("assets/2-Tile-Default.png");
+  content:url("assets/1st-Tile-Active.png") url("assets/2-Tile-Active.png") url("assets/3-Tile-Active.png") url("assets/4-Tile-Active.png")
+  url("assets/5-Tile-Active.png") url("assets/6-Tile-Active.png")
 }
 h1,
 h2,
