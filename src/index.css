@@ -410,10 +410,17 @@ html,
 }
 
 .google-text {
-  padding-bottom: 22px;
+  /* padding-bottom: 22px; */
   padding-top: 20px;
+  text-align: center;
 }
-
+.loginMailImg {
+  width: 100%;
+  height: 62px !important;
+  /* width: auto; */
+  /* height: auto; */
+  cursor: pointer;
+}
 .google-change {
   background: url("assets/Log-in-with-email-id.png") no-repeat scroll 0 0
     transparent;
@@ -455,7 +462,7 @@ html,
   min-height: 100vh;
 }
 .wrapper-login .form-outline {
-  padding: 20px 0;
+  padding: 15px 0;
 }
 .wrapper-login .form-outline label {
   /* font-family: cursive; */
@@ -517,7 +524,7 @@ html,
 }
 
 .wrapper-login .signin:hover {
-  transform: scale(0.9);
+  transform: scale(0.8);
 }
 .wrapper-login .form-check .radio-inline {
   background: url("assets/Selector-Default.png") no-repeat scroll 0 0
@@ -553,7 +560,9 @@ html,
   background: url("assets/Selector-Active.png") no-repeat scroll 0 0 transparent;
   background-size: 100% 100%;
 }
-
+.form-check-overwrite {
+  padding-left: 0px !important;
+}
 .wrapper-dashboard {
   background-image: url("assets/Bg.png");
   min-height: 100vh;
@@ -867,6 +876,12 @@ html,
   text-align: center;
   /* bottom: 8rem; */
 }
+
+.modalTextContainerFailuerModal {
+  position: absolute;
+  text-align: center;
+  bottom: 5.5rem;
+}
 .modalHeadderFont {
   color: #fff;
   font-weight: bolder;
@@ -880,7 +895,7 @@ html,
 .modalScoreFont {
   color: #fff;
   font-weight: bolder;
-  font-size: 6rem;
+  font-size: 7rem;
 }
 .resultAction {
   cursor: pointer;
@@ -889,107 +904,96 @@ html,
 .resultAction:hover {
   transform: scale(0.9);
 }
-@media only screen and (max-width: 299px) {
+
+@media only screen and (max-width: 300px) {
+  .modalTextContainerFailuerModal {
+    bottom: 32rem;
+  }
   .modalHeadderFont {
-    font-size: 2rem;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .retakeText {
+    font-size: 0.8rem;
   }
   .modalScoreFont {
-    font-size: 3rem;
-  }
-  .modalTextContainerSuccess {
-    bottom: 19rem;
-  }
-  .modalTextContainerSuccessCert {
-    bottom: 19rem;
-  }
-  .modalTextContainerFailuer {
-    bottom: 22rem;
+    font-size: 1rem;
+    margin: 0;
   }
   .resultAction {
-    height: 80px !important;
+    height: 45px !important;
   }
+  .modalTextContainerSuccess {
+    bottom: 32rem;
 }
-@media only screen and (min-width: 300px) {
+}
+
+
+@media only screen and (min-width: 100px) {
+  .modalTextContainerFailuerModal {
+    bottom: 32rem;
+  }
   .modalHeadderFont {
     font-size: 2.5rem;
   }
+  .retakeText {
+    font-size: 0.8rem;
+  }
   .modalScoreFont {
     font-size: 3rem;
   }
-  .modalTextContainerSuccess {
-    bottom: 19rem;
-  }
-  .modalTextContainerSuccessCert {
-    bottom: 19rem;
-  }
-  .modalTextContainerFailuer {
-    bottom: 21rem;
-  }
   .resultAction {
-    height: 80px !important;
+    height: 71px !important;
   }
+  .modalTextContainerSuccess {
+    bottom: 21rem;
 }
+}
+
 
 @media only screen and (min-width: 300px) {
+  .modalTextContainerFailuerModal {
+    bottom: 12rem;
+  }
   .modalHeadderFont {
+    font-size: 1.5rem;
+  }
+  .retakeText {
+    font-size: 1rem;
+  }
+  .modalScoreFont {
     font-size: 3rem;
   }
-  .modalScoreFont {
-    font-size: 5rem;
-  }
-  .modalTextContainerSuccess {
-    bottom: 15rem;
-  }
-  .modalTextContainerSuccessCert {
-    bottom: 15rem;
-  }
-  .modalTextContainerFailuer {
-    bottom: 18rem;
-  }
   .resultAction {
-    height: 85px !important;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .modalHeadderFont {
-    font-size: 3.5rem;
-  }
-  .modalScoreFont {
-    font-size: 5rem;
+    height: 71px !important;
   }
   .modalTextContainerSuccess {
     bottom: 10rem;
+}
+}
+
+
+@media only screen and (min-width: 600px) {
+  .modalTextContainerFailuerModal {
+    bottom: 0rem;
   }
-  .modalTextContainerSuccessCert {
-    bottom: 1rem;
+  .modalHeadderFont {
+    font-size: 3.7rem;
   }
-  .modalTextContainerFailuer {
-    bottom: 16rem;
+  .retakeText {
+    font-size: 2rem;
+  }
+  .modalScoreFont {
+    font-size: 7rem;
   }
   .resultAction {
     height: auto !important;
   }
+  .modalTextContainerSuccess {
+    bottom: -3rem;
 }
-/* 
+}
 
-@media only screen and (min-width: 768px) {
-  .modalHeadderFont {
-    color:green;
-  }
-} 
-
-@media only screen and (min-width: 992px) {
-  .modalHeadderFont {
-    color:blue;
-  }
-} 
-
-@media only screen and (min-width: 1200px) {
-  .modalHeadderFont {
-    color:orange;
-  } 
-}*/
 
 .modalBodyError {
   background: url("assets/Log-in-Logout-modal.png") no-repeat scroll 0 0
@@ -1055,10 +1059,13 @@ html,
   align-items: center;
 }
 .chooseFileInput {
-  border: 5px solid #f7a125;
-  padding: 10px 5px;
+  background: url("assets/Inputbox.png") no-repeat scroll 0 0 transparent;
+  height: 65px;
+  background-size: 100% 65px;
+  /* border: 5px solid #f7a125; */
+  padding: 15px 15px;
   margin: 26px 10px;
-  background-color: #6b1dce;
+  /* background-color: #6b1dce; */
   width: 325px;
   font-size: 18px;
   color: white;
@@ -1066,5 +1073,34 @@ html,
 }
 .docUploadForm {
   text-align: center;
+}
+.workStreemDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.selectWorkStreem {
+  width: 100%;
+  background: url("assets/Inputbox.png") no-repeat scroll 0 0 transparent;
+  height: 68px;
+  background-size: 100% 65px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 16px 16px 12px 11px;
+  background-color: #6c33a8;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  color: white;
+  padding: 15px;
+  box-shadow: none;
+  outline: none;
+}
+.workStreemLabel {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
 }
 /* QuestionsUpload page css end */

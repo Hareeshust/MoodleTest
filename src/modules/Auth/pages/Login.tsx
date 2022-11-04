@@ -11,13 +11,8 @@ import { RootState } from "../../../app/store";
 import buttonClickAudio from "../../../assets/audios/ButtonClick.mp3";
 // @ts-ignore: Unreachable code error
 import cardClick from "../../../assets/audios/cardClick.mp3";
-import {
-  Button,
-  Modal
-} from "react-bootstrap";
-
-
-
+import loginWithTSYSMail from "../../../assets/Log-in-with-email-id.png";
+import { Button, Modal } from "react-bootstrap";
 
 const initialValues = {
   username: "",
@@ -39,8 +34,15 @@ function Login(props: any) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [show, setShow] = useState(false);
-  const [message, setMessage] = useState("")
-  const { user, isLoggedIn, loginFailure, testCleared, retakeDate, testStarted } = useSelector(
+  const [message, setMessage] = useState("");
+  const {
+    user,
+    isLoggedIn,
+    loginFailure,
+    testCleared,
+    retakeDate,
+    testStarted,
+  } = useSelector(
     (state: RootState) => ({
       user: state.auth.user,
       isLoggedIn: state.auth.isLoggedIn,
@@ -49,14 +51,14 @@ function Login(props: any) {
       userLogonTime: state.auth.userLogonTime,
       testCleared: state.auth.testCleared,
       retakeDate: state.auth.retakeDate,
-      testStarted: state.auth.testStarted
+      testStarted: state.auth.testStarted,
     }),
     shallowEqual
   );
-  console.log('testCleared', testCleared, isLoggedIn);
+  console.log("testCleared", testCleared, isLoggedIn);
   useEffect(() => {
-   dispatch(actions.initialiseCalls())
-  }, [])
+    dispatch(actions.initialiseCalls());
+  }, []);
   useEffect(() => {
     if (isLoggedIn) {
       if (!testCleared && !testStarted) {
@@ -69,17 +71,15 @@ function Login(props: any) {
         setShow(true);
       }
     }
-    
   }, [isLoggedIn]);
-  useEffect(()=>{
-    if(loginFailure){
+  useEffect(() => {
+    if (loginFailure) {
       setMessage("Please Use TSYS Mail To Login");
       setShow(true);
+    } else {
+      setShow(false);
     }
-    else {
-      setShow(false)
-    }
-  },[loginFailure])
+  }, [loginFailure]);
 
   const formik = useFormik({
     initialValues,
@@ -125,131 +125,156 @@ function Login(props: any) {
 
   const cardSelection = (type) => {
     new Audio(cardClick).play();
-    if(type === "ADMIN"){
-      history.push("/QuestionsUpload");
+    const adminLbl = document.getElementById("adminLabel");
+    const empLbl = document.getElementById("employeeLabel");
+    adminLbl.classList.remove("employee-active");
+    empLbl.classList.remove("employee-active");
+    if (type === "ADMIN") {
+      // history.push("/QuestionsUpload");
+      adminLbl.classList.add("employee-active");
+    } else if (type === "EMPLOYEE") {
+      empLbl.classList.add("employee-active");
     }
   };
 
-  const  handleClose = () => setShow(false); 
+  const handleClose = () => setShow(false);
 
   return (
-    <div> 
-      <LoginError message={message} page="login" show={show} handleClose= {handleClose} confirm={()=>{}} cancel={()=>{}}/>   
-    <div className="wrapper-login bg-image">
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-1 col-xs-offset-11 volume">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="check1"
-                name="option1"
-                value="something"
-                checked
-              />
-              <label className="form-check-label" htmlFor="check1"></label>
+    <div>
+      <LoginError
+        message={message}
+        page="login"
+        show={show}
+        handleClose={handleClose}
+        confirm={() => {}}
+        cancel={() => {}}
+      />
+      
+      <div className="wrapper-login bg-image">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-1 col-xs-offset-11 volume">
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="check1"
+                  name="option1"
+                  value="something"
+                  checked
+                />
+                <label className="form-check-label" htmlFor="check1"></label>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-6 col-xs-offset-3 mt">
-            <form>
-              <div className="form-check row">
-                <div className="col-xs-12 col-md-6">
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    id="radio1"
-                    name="optradio"
-                    value="option1"
-                    checked
-                  />
+          <div className="row">
+            <div className="col-xs-6 col-xs-offset-3 mt">
+              <form>
+                <div className="form-check row form-check-overwrite">
+                  <div className="col-xs-12 col-md-6">
+                    <input
+                      type="radio"
+                      className="form-check-input"
+                      id="radio1"
+                      name="optradio"
+                      value="option1"
+                      checked
+                    />
+                    <label
+                      className="radio-inline employee-active"
+                      htmlFor="radio1"
+                      id="employeeLabel"
+                      onClick={() => cardSelection("EMPLOYEE")}
+                    >
+                      EMPLOYEE
+                    </label>
+                  </div>
+                  <div className="col-xs-12 col-md-6">
+                    <input
+                      type="radio"
+                      className="form-check-input"
+                      id="radio2"
+                      name="optradio"
+                      value="option2"
+                    />
+                    <label
+                      className="radio-inline"
+                      htmlFor="radio2"
+                      id="adminLabel"
+                      onClick={() => cardSelection("ADMIN")}
+                    >
+                      ADMIN
+                    </label>
+                  </div>
+                </div>
+                <div className="form-outline">
+                  <div className="google-text">
+                    {/* <button
+                      type="button"
+                      onClick={googleSignin}
+                      className="google-change"
+                    ></button> */}
+                    
+            <img
+              src={loginWithTSYSMail}
+              alt="Score Card"
+              className="img-fluid loginMailImg"
+              onClick={googleSignin}
+            />
+                  </div>
+                </div>
+                <div className="form-outline login-select">
                   <label
-                    className="radio-inline employee-active"
-                    htmlFor="radio1"
-                    onClick={() => cardSelection('EMPLOYEE')}
+                    className="form-label login-option"
+                    htmlFor="form2Example1"
                   >
-                    EMPLOYEE
+                    or
                   </label>
                 </div>
-                <div className="col-xs-12 col-md-6">
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    id="radio2"
-                    name="optradio"
-                    value="option2"
-                  />
-                  <label
-                    className="radio-inline"
-                    htmlFor="radio2"
-                    onClick={() => cardSelection('ADMIN')}
-                  >
-                    ADMIN
-                  </label>
-                </div>
-              </div>
-              <div className="form-outline">
-                <div className="google-text">
-                  <button
-                    type="button"
-                    onClick={googleSignin}
-                    className="google-change"
-                  >
-                  </button>
-                </div>
-              </div>
-              <div className="form-outline login-select">
-                <label
-                  className="form-label login-option"
-                  htmlFor="form2Example1"
-                >
-                  or
-                </label>
-              </div>
-              {/* <div className="form-outline">
+                {/* <div className="form-outline">
                <button onClick={signInWithGoogle} type="button" className="login-with-google-btn" ></button>
 
                </div> */}
-              <div className="form-outline mb-4" style={{paddingTop:"5px"}}>
-                <label className="form-label" htmlFor="form2Example1">
-                  EMAIL
-                </label>
-                <input
-                  type="email"
-                  id="form2Example1"
-                  className="form-control"
-                />
-              </div>
-
-              <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="form2Example2">
-                  PASSWORD
-                </label>
-                <input
-                  type="password"
-                  id="form2Example2"
-                  className="form-control"
-                />
-              </div>
-
-              <div className="row mb-4">
-                <div className="col passreset">
-                  <a href="#">FORGOT PASSWORD</a>
+                <div
+                  className="form-outline mb-4"
+                >
+                  <label className="form-label" htmlFor="form2Example1">
+                    EMAIL
+                  </label>
+                  <input
+                    type="email"
+                    id="form2Example1"
+                    className="form-control"
+                  />
                 </div>
-              </div>
 
-              <button
-                type="button"
-                className="mb-4 signin"
-                onClick={() => signIn()}
-              ></button>
-            </form>
+                <div className="form-outline mb-4">
+                  <label className="form-label" htmlFor="form2Example2">
+                    PASSWORD
+                  </label>
+                  <input
+                    type="password"
+                    id="form2Example2"
+                    className="form-control"
+                  />
+                </div>
+
+                <div className="row mb-4">
+                  <div className="col passreset">
+                    <a href="#">FORGOT PASSWORD</a>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="mb-4 signin"
+                  onClick={() => signIn()}
+                ></button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

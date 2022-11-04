@@ -10,12 +10,25 @@ import { RootState } from "../../../app/store";
 import * as XLSX from "xlsx";
 
 const QuestionsUpload = () => {
+  const workstream = {
+    title: "TSYS Workstream",
+    choices: [
+      { text: "NOTIFICATION", value: "notification" },
+      { text: "CARD", value: "card" },
+      { text: "SERVICING", value: "servicing" },
+      { text: "AUTHORIZATION", value: "authorization" },
+      { text: "RISK", value: "risk" },
+      { text: "FRAUD", value: "fraud" },
+    ],
+  };
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [show, setShow] = useState(false);
   const [excelFile, setExcelFile] = useState(null);
   const [excelData, setExcelData] = useState(null);
+  const [workStreemSelected, setWorkStreemSelected] = useState("");
 
   const showPrompt = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -51,10 +64,10 @@ const QuestionsUpload = () => {
       setExcelFile(null);
     }
   };
-  
+
   const handelUpload = () => {
     if (excelFile !== null) {
-      const workBook = XLSX.read(excelFile,{type:'buffer'});
+      const workBook = XLSX.read(excelFile, { type: "buffer" });
       const worksheetName = workBook.SheetNames[0];
       const worksheet = workBook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
@@ -65,6 +78,10 @@ const QuestionsUpload = () => {
     } else {
       setExcelData(null);
     }
+  };
+
+  const handleChange = (event) => {
+    setWorkStreemSelected(event.target.value);
   };
 
   return (
@@ -103,6 +120,23 @@ const QuestionsUpload = () => {
       />
       <div className="uploadFileMainDiv">
         <form className="docUploadForm">
+          <div className="workStreemDiv">
+            <label htmlFor="workStreemSelect" className="workStreemLabel">
+              Work Streem
+            </label>
+            <select
+              id="workStreemSelect"
+              className="selectWorkStreem"
+              onChange={handleChange}
+            >
+              <option value="" selected>
+                SELECT
+              </option>
+              {workstream.choices.map((data, index) => (
+                <option value={data.value}>{data.text}</option>
+              ))}
+            </select>
+          </div>
           <input
             type="file"
             id="myFile"
