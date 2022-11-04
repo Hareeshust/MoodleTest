@@ -28,7 +28,7 @@ const QuestionsUpload = () => {
   const [show, setShow] = useState(false);
   const [excelFile, setExcelFile] = useState(null);
   const [excelData, setExcelData] = useState(null);
-  const [workStreemSelected, setWorkStreemSelected] = useState("");
+  const [workStreamSelected, setWorkStreamSelected] = useState("");
 
   const showPrompt = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -41,11 +41,11 @@ const QuestionsUpload = () => {
     shallowEqual
   );
 
-  // useEffect(() => {
-  //   if (!isLoggedIn) {
-  //     history.push("/login");
-  //   }
-  // }, [isLoggedIn]);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history.push("/login");
+    }
+  }, [isLoggedIn]);
 
   const logOut = () => {
     setShow(false);
@@ -72,16 +72,14 @@ const QuestionsUpload = () => {
       const worksheet = workBook.Sheets[worksheetName];
       const data = XLSX.utils.sheet_to_json(worksheet);
       setExcelData(data);
-      console.log("data = "+JSON.stringify(data));
-      console.log("data = ",excelData);
-      dispatch(userActions.uploadQuestions('notification',data));
+      dispatch(userActions.uploadQuestions(workStreamSelected,data));
     } else {
       setExcelData(null);
     }
   };
 
   const handleChange = (event) => {
-    setWorkStreemSelected(event.target.value);
+    setWorkStreamSelected(event.target.value);
   };
 
   return (

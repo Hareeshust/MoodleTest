@@ -59,26 +59,49 @@ export const getAllUsers =  () => async (dispatch: any) => {
   };
 
 export const uploadQuestions = (workstream: any, questions:any) => async (dispatch: any) => {
+  const updatedQuestion = formatQuestions(questions);
    const questionRef = collection(db,'testquestions');
-  // questions.forEach(function (obj) {
-  //   addDoc(questionRef, { questionText: obj.QuestionText, type: obj.QuestionType, options:['1','3'] })
-  //     .then(function (docRef) {
-  //       console.log("Document written with ID: ", docRef.id);
-  //     })
-  //     .catch(function (error) {
-  //       console.error("Error adding document: ", error);
-  //     });
-  // });
-
   const docRef = doc(db, 'testquestions',workstream);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    await updateDoc(docRef, {questions:questions});
+    await updateDoc(docRef, {questions:updatedQuestion});
   } else {
     await setDoc(doc(questionRef,workstream), {
-      questions:questions
+      questions:updatedQuestion
      });
   }
 
 
 };
+
+const formatQuestions = (questions) =>{
+  let questionArray = [];
+  questions.map((question)=>{
+    let options =[];
+    let option1 = {
+      answerText: question.Option1,
+      isCorrect: question?.CorrectAnswer?.split(',')?.includes('Option1') ? true: false
+    }
+    let option2 = {
+      answerText: question.Option2,
+      isCorrect: question?.CorrectAnswer?.split(',')?.includes('Option2') ? true: false
+    }
+    let option3 = {
+      answerText: question.Option3,
+      isCorrect: question?.CorrectAnswer?.split(',')?.includes('Option3') ? true: false
+    }
+    let option4 = {
+      answerText: question.Option4,
+      isCorrect: question?.CorrectAnswer?.split(',')?.includes('Option4') ? true: false
+    }
+
+    options = [option1,option2,option3,option4]
+    let data = {
+      questionText: question.questionText,
+      type: question.type,
+      options: options
+    }
+    questionArray.push(data)
+  })
+  return questionArray;
+}

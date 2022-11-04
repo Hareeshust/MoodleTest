@@ -35,6 +35,7 @@ function Login(props: any) {
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("");
+  const [userType, setUserType] = useState();
   const {
     user,
     isLoggedIn,
@@ -55,13 +56,15 @@ function Login(props: any) {
     }),
     shallowEqual
   );
-  console.log("testCleared", testCleared, isLoggedIn);
   useEffect(() => {
     dispatch(actions.initialiseCalls());
   }, []);
   useEffect(() => {
     if (isLoggedIn) {
-      if (!testCleared && !testStarted) {
+      if(userType === 'ADMIN'){
+        history.push("/QuestionsUpload");
+      }
+      else if (!testCleared && !testStarted) {
         history.push("/home");
       } else if (testCleared) {
         setMessage("You Have Already Cleared The Quiz");
@@ -124,6 +127,7 @@ function Login(props: any) {
   };
 
   const cardSelection = (type) => {
+    setUserType(type);
     new Audio(cardClick).play();
     const adminLbl = document.getElementById("adminLabel");
     const empLbl = document.getElementById("employeeLabel");
