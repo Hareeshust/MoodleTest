@@ -2,7 +2,7 @@ import { user } from "../../../data/user";
 import * as requestFromServer from "./usersCrud";
 import { userSlice } from "./usersSlice";
 import {db} from '../../../firebaseconfig';
-import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore';
+import {collection, getDocs, addDoc, setDoc, getDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore';
 import { format } from 'date-fns'
 var days=7;
 var date = new Date();
@@ -57,41 +57,28 @@ export const getAllUsers =  () => async (dispatch: any) => {
     const newFields = {testStarted: testStarted,starttime: format(new Date(), 'MM/dd/yyyy'), retakeDate: retestDate }
     await updateDoc(userDoc, newFields);
   };
-  
-  
-  const getUserStructure = (user: any)=>{
-    let data =  {
-      "gender": user.gender,
-      "name": {
-        "title":  user.title,
-        "first": user.firstname,
-        "last": user.lastname
-      },
-      "location": {
-        "street": "2989 keistraat",
-        "city": "castricum",
-        "state": "friesland",
-        "zip": 42366
-      },
-      "email": user.email,
-      "username": user.username,
-      "password": user.password,
-      "salt": "60AYD76x",
-      "md5": "7ce5593c3ff3da5a4a87c8384c444809",
-      "sha1": "be29c483a39cf7c635d09b800ef2acb196812c6e",
-      "sha256": "0dcb04303409c3043fa493c3f1f6f1798fecb61009bd64e373c5ccfe8db00a63",
-      "registered": 1110588771,
-      "dob": user.dob,
-      "phone": user.phone,
-      "cell": "(364)-503-5528",
-      "BSN": "65048540",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/74.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/74.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/74.jpg"
-      }
-    }
-    return data;
+
+export const uploadQuestions = (workstream: any, questions:any) => async (dispatch: any) => {
+   const questionRef = collection(db,'testquestions');
+  // questions.forEach(function (obj) {
+  //   addDoc(questionRef, { questionText: obj.QuestionText, type: obj.QuestionType, options:['1','3'] })
+  //     .then(function (docRef) {
+  //       console.log("Document written with ID: ", docRef.id);
+  //     })
+  //     .catch(function (error) {
+  //       console.error("Error adding document: ", error);
+  //     });
+  // });
+
+  const docRef = doc(db, 'testquestions',workstream);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    await updateDoc(docRef, {questions:questions});
+  } else {
+    await setDoc(doc(questionRef,workstream), {
+      questions:questions
+     });
   }
 
- 
+
+};

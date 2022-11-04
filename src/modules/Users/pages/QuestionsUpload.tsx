@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
 import * as actions from "../../Auth/_redux/authActions";
+import * as userActions from "../_redux/usersActions";
+
 import LoginError from "../../Components/LoginError";
 import { useHistory } from "react-router-dom";
 import { RootState } from "../../../app/store";
@@ -26,11 +28,11 @@ const QuestionsUpload = () => {
     shallowEqual
   );
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      history.push("/login");
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     history.push("/login");
+  //   }
+  // }, [isLoggedIn]);
 
   const logOut = () => {
     setShow(false);
@@ -59,6 +61,7 @@ const QuestionsUpload = () => {
       setExcelData(data);
       console.log("data = "+JSON.stringify(data));
       console.log("data = ",excelData);
+      dispatch(userActions.uploadQuestions('notification',data));
     } else {
       setExcelData(null);
     }
