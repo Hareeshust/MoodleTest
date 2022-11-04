@@ -37,17 +37,12 @@ body::after {
   z-index: -1;
   content: url("assets/1st-Tile-Active.png") url("assets/1st-Tile.png")
     url("assets/2-Tile-Active.png") url("assets/2-Tile-Default.png")
-    url("assets/3-Tile-Active.png") url("assets/3-Tile-Active.svg")
-    url("assets/3-Tile-Default.png") url("assets/3-Tile-Default.svg")
-    url("assets/4-Tile-Active.png") url("assets/4-Tile-Active.svg")
-    url("assets/4-Tile-Default.png") url("assets/4-Tile-Default.svg")
-    url("assets/5-Tile-Active.png") url("assets/5-Tile-Active.svg")
-    url("assets/5-Tile-Default.png") url("assets/5-Tile-Default.svg")
-    url("assets/6-Tile-Active.png") url("assets/6-Tile-Active.svg")
-    url("assets/6-Tile-Default.png") url("assets/6-Tile-Default.svg")
+    url("assets/3-Tile-Active.png") url("assets/3-Tile-Default.png")
+    url("assets/4-Tile-Active.png") url("assets/4-Tile-Default.png")
+    url("assets/5-Tile-Active.png") url("assets/5-Tile-Default.png")
+    url("assets/6-Tile-Active.png") url("assets/6-Tile-Default.png")
     url("assets/Bg-result.png") url("assets/Bg.png") url("assets/bg1.png")
-    url("assets/Bgnew.png") url("assets/Bgnew.svg")
-    url("assets/Center-option-default-1.png")
+    url("assets/Bgnew.png") url("assets/Center-option-default-1.png")
     url("assets/Center-option-selected-1.png") url("assets/Certificate.png")
     url("assets/Download-certificate.png") url("assets/Exit-button.png")
     url("assets/Inputbox.png") url("assets/Left-option-default-1.png")
@@ -1098,10 +1093,22 @@ html,
   padding: 15px 15px;
   margin: 26px 10px;
   /* background-color: #6b1dce; */
-  width: 325px;
+  width: 455px;
   font-size: 18px;
   color: white;
   font-weight: bold;
+}
+.chooseFileInput::file-selector-button {
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0.2em;
+  border-radius: 0.25rem;
+  background-color: #88c900;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 17px;
+  columns: white !important;
 }
 .docUploadForm {
   text-align: center;
