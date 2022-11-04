@@ -29,10 +29,41 @@ body {
   font-family: myFirstFont;
 }
 
-body::after{
-  position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
-  content:url("assets/1st-Tile-Active.png") url("assets/2-Tile-Active.png") url("assets/3-Tile-Active.png") url("assets/4-Tile-Active.png")
-  url("assets/5-Tile-Active.png") url("assets/6-Tile-Active.png")
+body::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url("assets/1st-Tile-Active.png") url("assets/1st-Tile.png")
+    url("assets/2-Tile-Active.png") url("assets/2-Tile-Default.png")
+    url("assets/3-Tile-Active.png") url("assets/3-Tile-Active.svg")
+    url("assets/3-Tile-Default.png") url("assets/3-Tile-Default.svg")
+    url("assets/4-Tile-Active.png") url("assets/4-Tile-Active.svg")
+    url("assets/4-Tile-Default.png") url("assets/4-Tile-Default.svg")
+    url("assets/5-Tile-Active.png") url("assets/5-Tile-Active.svg")
+    url("assets/5-Tile-Default.png") url("assets/5-Tile-Default.svg")
+    url("assets/6-Tile-Active.png") url("assets/6-Tile-Active.svg")
+    url("assets/6-Tile-Default.png") url("assets/6-Tile-Default.svg")
+    url("assets/Bg-result.png") url("assets/Bg.png") url("assets/bg1.png")
+    url("assets/Bgnew.png") url("assets/Bgnew.svg")
+    url("assets/Center-option-default-1.png")
+    url("assets/Center-option-selected-1.png") url("assets/Certificate.png")
+    url("assets/Download-certificate.png") url("assets/Exit-button.png")
+    url("assets/Inputbox.png") url("assets/Left-option-default-1.png")
+    url("assets/Left-option-selected-1.png")
+    url("assets/Log-in-Logout-modal.png") url("assets/Log-in-with-email-id.png")
+    url("assets/Music-Off.png") url("assets/Music-on.png")
+    url("assets/Next-button.png") url("assets/Profile.png")
+    url("assets/Question-bg.png") url("assets/Return-home.png")
+    url("assets/Right-option-default-1.png")
+    url("assets/Right-option-selected-1.png") url("assets/Score-card-fail.png")
+    url("assets/Score-crad.png") url("assets/Selection-dot.png")
+    url("assets/Selector-Active.png") url("assets/Selector-Default.png")
+    url("assets/Sign-in-Button.png") url("assets/Stepper-dot.png")
+    url("assets/Stepper.png") url("assets/Submitt.png") url("assets/Timer.png")
+    url("assets/Top-Banner.png") url("assets/Top-panel.png")
+    url("assets/Total-question.png") url("assets/Total-time.png");
 }
 h1,
 h2,
@@ -930,9 +961,8 @@ html,
   }
   .modalTextContainerSuccess {
     bottom: 32rem;
+  }
 }
-}
-
 
 @media only screen and (min-width: 100px) {
   .modalTextContainerFailuerModal {
@@ -952,9 +982,8 @@ html,
   }
   .modalTextContainerSuccess {
     bottom: 21rem;
+  }
 }
-}
-
 
 @media only screen and (min-width: 300px) {
   .modalTextContainerFailuerModal {
@@ -974,9 +1003,8 @@ html,
   }
   .modalTextContainerSuccess {
     bottom: 10rem;
+  }
 }
-}
-
 
 @media only screen and (min-width: 600px) {
   .modalTextContainerFailuerModal {
@@ -996,9 +1024,8 @@ html,
   }
   .modalTextContainerSuccess {
     bottom: -3rem;
+  }
 }
-}
-
 
 .modalBodyError {
   background: url("assets/Log-in-Logout-modal.png") no-repeat scroll 0 0
