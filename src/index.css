@@ -1022,6 +1022,28 @@ html,
   }
 }
 
+
+@media only screen and (min-width: 800px) {
+  .modalTextContainerFailuerModal {
+    bottom: 15rem;
+  }
+  .modalHeadderFont {
+    font-size: 5rem;
+  }
+  .retakeText {
+    font-size: 3.5rem;
+  }
+  .modalScoreFont {
+    font-size: 7rem;
+  }
+  .resultAction {
+    height: auto !important;
+  }
+  .modalTextContainerSuccess {
+    bottom: 11rem;
+  }
+}
+
 .modalBodyError {
   background: url("assets/Log-in-Logout-modal.png") no-repeat scroll 0 0
     transparent;

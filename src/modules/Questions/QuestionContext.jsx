@@ -97,7 +97,6 @@ export default function QuestionContextContainer() {
   const hideCertificateModal = () => {
     setShowCertificate(false);
     setTestScore(0);
-    //history.push("/dashboard");
     dispatch(actions.logout())
     history.push("/login");
   };
