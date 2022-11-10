@@ -39,7 +39,9 @@ const RadioButton = () => {
                 selectAnswer();
               }}
             >
-              {optionLabel[optionIndex]}:{option.answerText}
+              {/* {optionLabel[optionIndex]}:{option.answerText} */}
+              {option.answerText}
+
             </label>
           </div>
         ))}
