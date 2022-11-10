@@ -18,7 +18,9 @@ const RadioButton = () => {
   return (
     <React.Fragment key={currentQuestion?.questionText}>
       <div className="form-check row dash-items answer_main_div">
-        {currentQuestion?.options?.map((option, optionIndex) => (
+        {currentQuestion?.options?.map((option, optionIndex) => {
+            const classNameForLabel = "answersLabel"+ optionLabel[optionIndex];
+            return(
           <div
             className="col-xs-12 col-md-3 answer_radio"
             key={option.answerText}
@@ -33,18 +35,19 @@ const RadioButton = () => {
               onChange={onChangeHandler}
             />
             <label
-              className="col-12 radio-inline"
+              className="col-12 radio-inline forlabelAlligment"
               htmlFor={`radio${optionIndex + 1}`}
               onClick={() => {
                 selectAnswer();
               }}
             >
-              {/* {optionLabel[optionIndex]}:{option.answerText} */}
+            <p className={classNameForLabel}>{optionLabel[optionIndex]}</p>
               {option.answerText}
 
             </label>
           </div>
-        ))}
+        )}
+        )};
       </div>
       <NextButton selectedValue={selectedValue} />
     </React.Fragment>

@@ -908,6 +908,39 @@ html,
   /* bottom: 8rem; */
 }
 
+.forlabelAlligment{
+  display: flex;
+  justify-content: center;
+}
+.answersLabelA{
+  position: absolute;
+  top: 8px;
+  justify-content: center;
+}
+
+.answersLabelB{
+  position: absolute;
+  top: 8px;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+.answersLabelC{
+  position: absolute;
+  top: 8px;
+  justify-content: center;
+  padding-left: 8px;
+}
+
+.answersLabelD{
+  position: absolute;
+  top: 8px;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+
+
 .modalTextContainerFailuerModal {
   position: absolute;
   text-align: center;
