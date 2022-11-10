@@ -58,7 +58,7 @@ const Certificate = (props: {
         context!.fillText(passScore+"%", 669, 374);
         context!.font = "20px Segoe UI";
         const month  = date.toLocaleString('default', { month: 'long' });
-        context!.fillText(month +" "+date.getDay()+" "+date.getFullYear(), 495, 473);
+        context!.fillText(month +" "+date.getDate()+" "+date.getFullYear(), 495, 473);
         
         context!.font = "18px Segoe UI";
         context!.fillText(completionTime+" minutes", 600, 422);
