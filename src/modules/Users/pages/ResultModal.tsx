@@ -21,8 +21,8 @@ var day =last.getDate();
 var month=last.getMonth()+1;
 var year=last.getFullYear();
 const retestGmt = new Date(year, day, month);
-const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
-
+//const retestDate = format(new Date(year, day-1, month), 'MM/dd/yyyy')
+const retestDate = `${day}/${month}/${year}`
   const passScore = parseInt(props.score);
   const passed = props.isPassed;
   const scoreCard = passed ? scoreCardPass : scoreCardFail;
