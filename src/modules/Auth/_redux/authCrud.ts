@@ -1,5 +1,5 @@
 import axios from "axios";
- const endpoint = "https://randomuser.me/api/0.8/?results=20";
+const endpoint = "https://randomuser.me/api/0.8/?results=20";
 
 // A mock function to mimic making an async request for data
 export function fetchCount(amount = 1) {
@@ -13,7 +13,7 @@ export function fetchAllUsers() {
 }
 
 export function loginUser() {
-    return new Promise((resolve) =>
+  return new Promise((resolve) =>
     setTimeout(() => resolve({ data: "success" }), 500)
   );
-  }
+}

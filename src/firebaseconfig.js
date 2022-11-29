@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from '@firebase/firestore';
-import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import { getFirestore } from "@firebase/firestore";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBlLvgbTLrOm_m615Zj-Nu5RG-lFxl2628",
@@ -9,25 +9,30 @@ const firebaseConfig = {
   storageBucket: "moodle-test-a4df9.appspot.com",
   messagingSenderId: "1042177288201",
   appId: "1:1042177288201:web:04557a1dd11ec6d0a130d8",
-  measurementId: "G-BMRV3X5QNS"
-  };
+  measurementId: "G-BMRV3X5QNS",
+};
 
-  const app = initializeApp(firebaseConfig);
-  export const auth = getAuth(app);
-  export const db = getFirestore(app)
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
-  export const provider = new GoogleAuthProvider()
+export const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: "select_account",
+});
 
-  export const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result)=>{
+export const signInWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
       console.log(result);
-      const name  =result.user.displayName;
+      const name = result.user.displayName;
       const email = result.user.email;
-      const pic = result.user.photoURL
+      const pic = result.user.photoURL;
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       localStorage.setItem("pic", pic);
-    }).catch((error)=>{
-      console.log(error);
     })
-  }
+    .catch((error) => {
+      console.log(error);
+    });
+};
